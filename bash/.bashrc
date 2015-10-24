@@ -238,3 +238,6 @@ if [ -f ~/.bashrc_google ]; then
   source ~/.bashrc_google
 fi
 
+if [ -f ~/.bashrc_local ]; then
+  source ~/.bashrc_local
+fi
