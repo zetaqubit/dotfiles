@@ -317,6 +317,7 @@ endif
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
 "Plugin 'terryma/vim-multiple-cursors'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'
 Plugin 'Shougo/neomru.vim'
 Plugin 'sjbach/lusty'
@@ -428,12 +429,31 @@ function! s:unite_my_settings()"{{{
   nmap        <buffer> N              <Plug>(unite_select_previous_page)
   nmap        <buffer> <C-n>          <Plug>(unite_loop_cursor_down)
   nmap        <buffer> <C-p>          <Plug>(unite_loop_cursor_up)
+  imap        <buffer> <C-d>          <Plug>(unite_select_next_page)
+  imap        <buffer> <C-u>          <Plug>(unite_select_previous_page)
 endfunction"}}}
+
+" Make highlight light yellow. Workaround for cursor_line_highlight not
+" working.
+autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
+autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
 
 call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#matcher_default#use(['converter_relative_word', 'matcher_fuzzy'])
-nnoremap <leader>o :<C-u>Unite -no-split -start-insert file_rec<CR>
-nnoremap <leader>e :<C-u>Unite -no-split -start-insert buffer<CR>
+
+call unite#custom#profile('default', 'context', {
+      \ 'direction' : 'botright',
+      \ 'prompt' : '» ',
+      \ 'start_insert' : 1,
+      \ 'winheight' : 10,
+      \ 'cursor_line_highlight' : 'PmenuSel',
+      \ })
+
+let g:unite_enable_auto_select = 0
+
+nnoremap <leader>o :<C-u>Unite file_rec/async<cr>
+nnoremap <leader>e :<C-u>Unite buffer<cr>
+"nnoremap <leader>p :<C-u>UniteWithCurrentDir file_rec/async:!<cr>
 
 let g:unite_quick_match_table =
       \ get(g:, 'unite_quick_match_table', {
