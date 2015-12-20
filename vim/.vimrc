@@ -442,10 +442,9 @@ call unite#filters#sorter_default#use(['sorter_rank'])
 call unite#filters#matcher_default#use(['converter_relative_word', 'matcher_fuzzy'])
 
 call unite#custom#profile('default', 'context', {
-      \ 'direction' : 'botright',
+      \ 'direction' : 'belowright',
       \ 'prompt' : '» ',
       \ 'start_insert' : 1,
-      \ 'winheight' : 10,
       \ 'cursor_line_highlight' : 'PmenuSel',
       \ })
 
@@ -453,6 +452,7 @@ let g:unite_enable_auto_select = 0
 
 nnoremap <leader>o :<C-u>Unite file_rec/async<cr>
 nnoremap <leader>e :<C-u>Unite buffer<cr>
+nnoremap <leader>p :<C-u>UniteWithBufferDir file_rec/async<cr>
 "nnoremap <leader>p :<C-u>UniteWithCurrentDir file_rec/async:!<cr>
 
 let g:unite_quick_match_table =
