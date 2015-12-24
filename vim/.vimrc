@@ -74,9 +74,10 @@ noremap <Leader>q :cope<CR>
 noremap <Leader>n :cn<CR>
 noremap <Leader>p :cp<CR>
 
-" Go backwards and forwards in jumplist
-"noremap <C-b> <C-o>
-"noremap <C-m> <C-i>
+" Make ctrl-p in command-line mode behave exactly like up.
+" (e.g. will complete past commands with typed prefix)
+cnoremap <C-p> <up>
+cnoremap <C-n> <down>
 
 " Buffer management
 "set switchbuf=usetab,newtab
@@ -190,7 +191,7 @@ nnoremap <silent> , :call clearmatches()<Bar>:nohlsearch<Bar>:echo<CR>
 runtime! ftplugin/man.vim
 
 " Sudo write current file
-cmap W w !sudo tee >/dev/null %
+"cmap W w !sudo tee >/dev/null %
 
 " Compile current file
 "noremap , :!pdflatex %<CR>
@@ -452,8 +453,8 @@ let g:unite_enable_auto_select = 0
 
 nnoremap <leader>o :<C-u>Unite file_rec/async<cr>
 nnoremap <leader>e :<C-u>Unite buffer<cr>
-nnoremap <leader>p :<C-u>UniteWithBufferDir file_rec/async<cr>
-"nnoremap <leader>p :<C-u>UniteWithCurrentDir file_rec/async:!<cr>
+nnoremap <leader>b :<C-u>UniteWithBufferDir file_rec/async<cr>
+"nnoremap <leader>b :<C-u>UniteWithCurrentDir file_rec/async:!<cr>
 
 let g:unite_quick_match_table =
       \ get(g:, 'unite_quick_match_table', {
