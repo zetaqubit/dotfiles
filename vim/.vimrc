@@ -301,6 +301,9 @@ noremap <Leader>, :silent! exe printf('match IncSearch /\<%s\>/', expand('<cword
 " Set 256 colors
 set t_Co=256
 
+" Bind <C-c> to <Esc> in insert mode. This still triggers InsertLeave autocommands.
+inoremap <C-c> <Esc>
+
 "
 
 """"""""""""""""""""""""""""""""
@@ -328,6 +331,7 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 "Plugin 'wincent/command-t'
 Plugin 'kien/ctrlp.vim'
+Plugin 'thirtythreeforty/lessspace.vim'
 
 "Plugin 'fholgado/minibufexpl.vim'
 
@@ -476,6 +480,11 @@ let g:ConqueTerm_EscKey = '<C-c>'
 "------- Begin airline
 set laststatus=2
 "------- End airline
+
+"------- Begin lessspace.vim
+let g:lessspace_enabled = 1
+let g:lessspace_whitelist = ['cpp']
+"------- End lessspace.vim
 
 "------ Epilogue scripts
 
