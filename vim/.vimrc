@@ -291,10 +291,8 @@ autocmd FileType cpp setlocal colorcolumn=81
 
 " Add some filetypes
 augroup filetype
-  au! BufRead,BufNewFile BUILD,*.bzl setfiletype python " bazel
   au! BufRead,BufNewFile *.proto setfiletype proto " proto
   au! BufRead,BufNewFile *.prototxt setfiletype python " (fake proto)
-  au! BufRead,BufNewFile *.glsl,*.geom,*.vert,*.frag,*.gsh,*.vsh,*.fsh,*.vs,*.fs,*.gs,*.tcs,*.tes setfiletype glsl
 augroup end
 
 " Automatically refresh buffer from file.
@@ -340,6 +338,10 @@ Plugin 'tomasr/molokai'
 "Plugin 'wincent/command-t'
 Plugin 'kien/ctrlp.vim'
 Plugin 'thirtythreeforty/lessspace.vim'
+
+" Syntax highlighting
+Plugin 'davidzchen/vim-bazel'
+Plugin 'beyondmarc/glsl.vim'
 
 "Plugin 'fholgado/minibufexpl.vim'
 
@@ -493,6 +495,10 @@ set laststatus=2
 let g:lessspace_enabled = 1
 let g:lessspace_whitelist = ['cpp']
 "------- End lessspace.vim
+
+"------- Begin glsl.vim
+let g:glsl_file_extensions='*.glsl,*.geom,*.vert,*.frag,*.gsh,*.vsh,*.fsh,*.vs,*.fs,*.gs,*.tcs,*.tes'
+"------- End glsl.vim
 
 "------ Epilogue scripts
 
