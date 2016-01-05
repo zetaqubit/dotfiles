@@ -1,0 +1,3 @@
+# Ignore files in "config" folders that shouldn't be backed up.
+vim/.vim/bundle/
+vim/.vim/swapfiles/*.swp

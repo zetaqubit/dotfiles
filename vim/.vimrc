@@ -289,6 +289,14 @@ highlight ColorColumn ctermbg=lightcyan
 filetype on
 autocmd FileType cpp setlocal colorcolumn=81
 
+" Add some filetypes
+augroup filetype
+  au! BufRead,BufNewFile BUILD,*.bzl setfiletype python " bazel
+  au! BufRead,BufNewFile *.proto setfiletype proto " proto
+  au! BufRead,BufNewFile *.prototxt setfiletype python " (fake proto)
+  au! BufRead,BufNewFile *.glsl,*.geom,*.vert,*.frag,*.gsh,*.vsh,*.fsh,*.vs,*.fs,*.gs,*.tcs,*.tes setfiletype glsl
+augroup end
+
 " Automatically refresh buffer from file.
 set autoread
 
