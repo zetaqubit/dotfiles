@@ -231,8 +231,6 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 
-# Caffe dependencies.
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/OpenBLAS/lib:/opt/cuda/lib64
 
 if [ -f ~/.bashrc_google ]; then
   source ~/.bashrc_google
