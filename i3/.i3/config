@@ -95,7 +95,7 @@ bindsym $mod+a layout tabbed
 bindsym $mod+semicolon layout stacked
 
 # toggle tiling / floating
-bindsym $win+Shift+space floating toggle
+bindsym $mod+y floating toggle
 
 # change focus between tiling / floating windows
 bindsym $win+space focus mode_toggle

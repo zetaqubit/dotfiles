@@ -326,6 +326,7 @@ if (!atgoogle)
 endif
 Plugin 'tpope/vim-dispatch'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rsi'  " readline in insert mode
 "Plugin 'terryma/vim-multiple-cursors'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Shougo/unite.vim'

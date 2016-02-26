@@ -226,10 +226,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$HOME/neovim/bin:$PATH"
 
 # Force Clang as the default C and C++ compiler in CMake
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+#export CC=/usr/bin/clang
+#export CXX=/usr/bin/clang++
 
 
 if [ -f ~/.bashrc_google ]; then
