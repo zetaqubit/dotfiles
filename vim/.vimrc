@@ -307,8 +307,8 @@ noremap <Leader>, :silent! exe printf('match IncSearch /\<%s\>/', expand('<cword
 " Set 256 colors
 set t_Co=256
 
-" Bind <C-space> to <Esc> in insert mode. This still triggers InsertLeave autocommands.
-inoremap <NUL> <Esc>
+" Bind <C-g> to <Esc> in insert mode. This still triggers InsertLeave autocommands.
+inoremap <C-g> <Esc>
 
 "
 
