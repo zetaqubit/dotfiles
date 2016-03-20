@@ -28,7 +28,7 @@ values."
      (c-c++ :variables c-c++-enable-clang-support t)
      (syntax-checking :variables syntax-checking-enable-by-default nil)
      emacs-lisp
-     ;; git
+     git
      ;; markdown
      ;; org
      ranger
@@ -175,7 +175,7 @@ values."
    dotspacemacs-helm-position 'bottom
    ;; If non nil the paste micro-state is enabled. When enabled pressing `p`
    ;; several times cycle between the kill ring content. (default nil)
-   dotspacemacs-enable-paste-micro-state nil
+   dotspacemacs-enable-paste-micro-state t
    ;; Which-key delay in seconds. The which-key buffer is the popup listing
    ;; the commands bound to the current keystroke sequence. (default 0.4)
    dotspacemacs-which-key-delay 0.4
@@ -360,6 +360,16 @@ layers configuration. You are free to put any user code."
     (define-key-helm (kbd "C-d") 'helm-next-page)
     (define-key-helm (kbd "C-u") 'helm-previous-page)
     (define-key-helm (kbd "C-w") 'backward-kill-word)
+  )
+
+  ;; Search for the keymap that contains a mapping
+  (defun query-keybinding ()
+    (interactive)
+    (message (list
+     (minor-mode-key-binding (kbd "n"))
+     (local-key-binding (kbd "n"))
+     (global-key-binding (kbd "n"))
+     ))
   )
 )
 
