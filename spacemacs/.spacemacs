@@ -264,6 +264,9 @@ layers configuration. You are free to put any user code."
    evil-shift-round nil
   )
 
+  ;; Always follow symlinks when opening files.
+  (setq vc-follow-symlinks t)
+
   ;; Have Avy (SPC SPC character jump) use Dvorak homerow
   (setq avy-keys '(?h ?t ?n ?s ?a ?o ?e ?u ?i ?d ?p ?g ?c ?r ?k ?l ?b ?m ?w ?v ?z))
 
@@ -281,13 +284,14 @@ layers configuration. You are free to put any user code."
      ;; Note: As long as I return [escape] in normal-state, I don't need this.
      ;;((eq overriding-terminal-local-map evil-read-key-map) (keyboard-quit) (kbd ""))
      (t (kbd "C-g"))))
-  (define-key key-translation-map (kbd "C-g") 'my-esc)
+  (define-key key-translation-map (kbd "C-c") 'my-esc)
   ;; Works around the fact that Evil uses read-event directly when in operator state, which
   ;; doesn't use the key-translation-map.
-  (define-key evil-operator-state-map (kbd "C-g") 'keyboard-quit)
+  (define-key evil-operator-state-map (kbd "C-c") 'keyboard-quit)
   ;; Not sure what behavior this changes, but might as well set it, seeing the Elisp manual's
   ;; documentation of it.
-  (set-quit-char "C-g")
+  (set-quit-char "C-c")
+  (define-key key-translation-map (kbd "C--") (kbd "C-c"))
 
   ;; remappings
   (defun define-key-normal-mode (key fn)
@@ -332,6 +336,11 @@ layers configuration. You are free to put any user code."
   (define-key-normal-mode "_" 'evil-jump-forward)
 
   (with-eval-after-load 'company
+    ;; configs
+    (global-company-mode)
+    (setq company-idle-delay 0.05)
+    (setq company-auto-complete 'company-explicit-action-p)
+    ;; keybinds
     (define-key company-active-map (kbd "C-t") 'company-select-next)
     (define-key company-active-map (kbd "C-n") 'company-select-previous)
     (define-key company-active-map (kbd "C-d") 'company-next-page)
