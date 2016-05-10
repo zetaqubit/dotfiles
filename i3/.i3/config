@@ -15,6 +15,9 @@
 # Single monitors config.
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 
+# Enable compositing (to fix screen tearing)
+exec --no-startup-id compton -cCGb --backend glx --vsync opengl --glx-copy-from-front --glx-swap-method 2 --xrender-sync --xrender-sync-fence
+
 set $win Mod4
 set $mod Mod1
 
