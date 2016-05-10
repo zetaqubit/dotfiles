@@ -121,6 +121,12 @@ set shiftwidth=2
 set softtabstop=2
 set expandtab
 
+" Make python indent 2 spaces
+autocmd VimEnter * call SetPythonIndent()
+function! SetPythonIndent()
+  autocmd FileType python,bzl setlocal tabstop=2 shiftwidth=2 softtabstop=2
+endfunction
+
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
 function! Stab()
@@ -341,7 +347,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'thirtythreeforty/lessspace.vim'
 
 " Syntax highlighting
-Plugin 'davidzchen/vim-bazel'
+Plugin 'google/vim-ft-bzl'
 Plugin 'beyondmarc/glsl.vim'
 
 "Plugin 'fholgado/minibufexpl.vim'
