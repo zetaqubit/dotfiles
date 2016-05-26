@@ -19,7 +19,7 @@ exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 exec --no-startup-id compton -cCGb --backend glx --vsync opengl --glx-copy-from-front --glx-swap-method 2 --xrender-sync --xrender-sync-fence
 
 set $win Mod4
-set $mod Mod1
+set $mod Mod4
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -98,10 +98,10 @@ bindsym $mod+a layout tabbed
 bindsym $mod+semicolon layout stacked
 
 # toggle tiling / floating
-bindsym $mod+y floating toggle
+bindsym $mod+shift+y floating toggle
 
 # change focus between tiling / floating windows
-bindsym $win+space focus mode_toggle
+bindsym $mod+y focus mode_toggle
 
 # focus the parent container
 bindsym $mod+k focus parent
