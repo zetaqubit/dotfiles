@@ -24,19 +24,20 @@ values."
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      auto-completion
-     ;; better-defaults
+     better-defaults
      (c-c++ :variables c-c++-enable-clang-support t)
-     (syntax-checking :variables syntax-checking-enable-by-default nil)
+     (command-log)
+     ;; (syntax-checking :variables syntax-checking-enable-by-default nil)
      emacs-lisp
      git
      ;; markdown
      ;; org
      ranger
-     semantic
+     ;; semantic
      (shell :variables
-            shell-default-shell 'ansi-term)
+           shell-default-shell 'ansi-term
+           shell-default-position 'bottom)
      ;;        shell-default-height 30
-     ;;        shell-default-position 'bottom)
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
@@ -115,7 +116,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Monospace"
                                :size 15
                                :weight normal
                                :width normal
@@ -127,7 +128,7 @@ values."
    dotspacemacs-emacs-leader-key "M-m"
    ;; Major mode leader key is a shortcut key which is the equivalent of
    ;; pressing `<leader> m`. Set it to `nil` to disable it. (default ",")
-   dotspacemacs-major-mode-leader-key ","
+   dotspacemacs-major-mode-leader-key nil
    ;; Major mode leader key accessible in `emacs state' and `insert state'.
    ;; (default "C-M-m)
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
@@ -211,11 +212,11 @@ values."
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen. (default t)
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    ;; If non nil line numbers are turned on in all `prog-mode' and `text-mode'
    ;; derivatives. If set to `relative', also turns on relative line numbers.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
    ;; (default nil)
    dotspacemacs-smartparens-strict-mode nil
@@ -264,8 +265,15 @@ layers configuration. You are free to put any user code."
    evil-shift-round nil
   )
 
+  ;; Use smooth-scrolling
+  (setq scroll-conservatively 10000
+        scroll-margin 5)
+
   ;; Always follow symlinks when opening files.
   (setq vc-follow-symlinks t)
+
+  ;; Increase scrollback in term
+  (setq term-buffer-maximum-size 1000000)
 
   ;; Have Avy (SPC SPC character jump) use Dvorak homerow
   (setq avy-keys '(?h ?t ?n ?s ?a ?o ?e ?u ?i ?d ?p ?g ?c ?r ?k ?l ?b ?m ?w ?v ?z))
@@ -310,8 +318,9 @@ layers configuration. You are free to put any user code."
 
   (define-key-insert-mode "C-h" 'delete-backward-char)
   (define-key-insert-mode "C-w" 'backward-kill-word)
-  (define-key-insert-mode "C-t" 'next-line)
-  (define-key-insert-mode "C-n" 'previous-line)
+  ;; TODO: enable after figuring out how to exclude terminal-mode.
+  ;;(define-key-insert-mode "C-t" 'next-line)
+  ;;(define-key-insert-mode "C-n" 'previous-line)
 
   (define-key-normal-mode "SPC ;" 'helm-M-x)
   (define-key-normal-mode "SPC :" 'evilnc-comment-operator)
@@ -327,6 +336,7 @@ layers configuration. You are free to put any user code."
   (define-key-normal-mode "C-t" 'evil-window-down)
   (define-key-normal-mode "C-n" 'evil-window-up)
   (define-key-normal-mode "C-s" 'evil-window-right)
+  (define-key-normal-mode "L" 'evil-change-whole-line)
   (define-key-normal-mode "j" 'evil-search-next)
   (define-key-normal-mode "Q" 'evil-search-previous)
   (define-key-normal-mode "k" 'evil-repeat-find-char)
@@ -334,6 +344,19 @@ layers configuration. You are free to put any user code."
   (define-key-normal-mode "C-*" 'evil-lookup)
   (define-key-normal-mode "-" 'evil-jump-backward)
   (define-key-normal-mode "_" 'evil-jump-forward)
+
+  ;; remap "," to "<Leader>o" for quick access to user-defined maps.
+  ;; (with-eval-after-load 'evil-leader
+    (define-key evil-normal-state-map (kbd ",")
+      (lookup-key spacemacs-cmds (kbd "o")))
+      ;;(lookup-key evil-leader--default-map (kbd "SPC o")))
+  ;;)
+
+  (defun define-leader-command (key fn)
+    "Maps <Leader>key to fn in normal modes"
+    ;; (define-key evil-normal-state-map (kbd (concat "SPC o " key)) fn)
+    (define-key evil-normal-state-map (kbd (concat ", " key)) fn)
+  )
 
   (with-eval-after-load 'company
     ;; configs
@@ -351,9 +374,10 @@ layers configuration. You are free to put any user code."
     (define-key company-active-map (kbd "C-w") 'nil)
   )
 
-  ;; Switch between h and cc using ,ga
+  ;; Switch between h and cc using ,ga or ,o
   (with-eval-after-load 'projectile
     (push '("cc" "h") projectile-other-file-alist)
+    (define-leader-command "o" 'projectile-find-other-file)
   )
 
   ;; Use emacs bindings in helm edit mode
@@ -364,12 +388,23 @@ layers configuration. You are free to put any user code."
       (define-key helm-buffer-map (kbd key) fn)
       (define-key helm-generic-files-map (kbd key) fn)
     )
-    (define-key-helm (kbd "C-t") 'helm-next-line)
-    (define-key-helm (kbd "C-n") 'helm-previous-line)
-    (define-key-helm (kbd "C-d") 'helm-next-page)
-    (define-key-helm (kbd "C-u") 'helm-previous-page)
-    (define-key-helm (kbd "C-w") 'backward-kill-word)
+    (define-key-helm "C-t" 'helm-next-line)
+    (define-key-helm "C-n" 'helm-previous-line)
+    (define-key-helm "C-d" 'helm-next-page)
+    (define-key-helm "C-u" 'helm-previous-page)
+    (define-key-helm "C-w" 'backward-kill-word)
+
+    (define-key evil-normal-state-map (kbd "SPC y") 'helm-resume)
+
+    (define-leader-command "p" 'helm-projectile-switch-project)
+    (define-leader-command "t" 'helm-projectile-find-file)
   )
+
+  ;; Configure indent
+  (setq tab-width 2)
+  (defvaralias 'c-basic-offset 'tab-width)
+  (setq python-indent 2)
+  (setq evil-shift-width python-indent)
 
   ;; Search for the keymap that contains a mapping
   (defun query-keybinding ()
@@ -389,6 +424,9 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (evil-leader command-log-mode s powerline parent-mode projectile request gitignore-mode flycheck pkg-info epl flx smartparens iedit anzu highlight pos-tip company yasnippet packed dash helm avy helm-core async auto-complete popup package-build bind-key bind-map evil srefactor ranger paradox hydra spinner orgit magit-gitflow helm-flx evil-magit magit magit-popup git-commit with-editor company-quickhelp xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package stickyfunc-enhance spacemacs-theme spaceline smooth-scrolling smeargle shell-pop restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el page-break-lines open-junk-file neotree multi-term move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-c-headers cmake-mode clean-aindent-mode clang-format buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(projectile-other-file-alist
    (quote
     (("cc" "h")
@@ -414,4 +452,5 @@ layers configuration. You are free to put any user code."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
+ '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
