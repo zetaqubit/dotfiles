@@ -41,12 +41,15 @@ values."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
+     ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(
+     company-ycmd
+   )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
      ;; Disable evil-surround, which conflicts with the s-key needed for movement.
@@ -405,6 +408,16 @@ layers configuration. You are free to put any user code."
   (defvaralias 'c-basic-offset 'tab-width)
   (setq python-indent 2)
   (setq evil-shift-width python-indent)
+
+  (with-eval-after-load 'ycmd
+    (set-variable 'ycmd-server-command '("python" "/home/z/ycmd/ycmd"))
+    (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
+    (set-variable 'ycmd-extra-conf-whitelist '("~/*"))
+  )
+
+  (with-eval-after-load 'company-ycmd
+    (company-ycmd-setup)
+  )
 
   ;; Search for the keymap that contains a mapping
   (defun query-keybinding ()
