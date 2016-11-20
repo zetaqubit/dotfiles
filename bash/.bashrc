@@ -232,6 +232,13 @@ export PATH="$HOME/neovim/bin:$PATH"
 #export CC=/usr/bin/clang
 #export CXX=/usr/bin/clang++
 
+if [ -f /usr/share/fzf/key-bindings.bash ]; then
+  source /usr/share/fzf/key-bindings.bash
+fi
+
+if [ -f /usr/share/fzf/completion.bash ]; then
+  source /usr/share/fzf/completion.bash
+fi
 
 if [ -f ~/.bashrc_google ]; then
   source ~/.bashrc_google
