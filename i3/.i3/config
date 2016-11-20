@@ -16,7 +16,7 @@
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 
 # Enable compositing (to fix screen tearing)
-exec --no-startup-id compton -cCGb --backend glx --vsync opengl --glx-copy-from-front --glx-swap-method 2 --xrender-sync --xrender-sync-fence
+exec --no-startup-id compton --config ~/.config/compton.conf -b
 
 set $win Mod4
 set $mod Mod4
@@ -38,7 +38,7 @@ client.urgent           #C10004 #900000 #ffffff #900000
 floating_modifier $mod
 
 # Disable focus follows mouse (doesn't play well with intellij's popup windows.
-focus_follows_mouse yes
+focus_follows_mouse no
 
 # start a terminal
 #bindsym $win+Return exec i3-sensible-terminal
@@ -49,7 +49,7 @@ bindsym $mod+Return exec konsole
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+space exec dmenu_run
+bindsym $mod+g exec dmenu_run
 
 # lock screen
 bindsym Ctrl+Shift+Return exec gnome-screensaver-command -l
