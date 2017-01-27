@@ -16,10 +16,10 @@
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 
 # Enable compositing (to fix screen tearing)
-exec --no-startup-id compton --config ~/.config/compton.conf -b
+exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 
 set $win Mod4
-set $mod Mod4
+set $mod Mod1
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -59,6 +59,9 @@ bindsym $mod+F6 exec amixer set Master toggle && amixer set Headphone toggle
 bindsym $mod+F7 exec amixer set Master on && amixer set Headphone on && amixer set Master 2-
 bindsym $mod+F8 exec amixer set Master on && amixer set Headphone on && amixer set Master 2+
 
+# Swap the current workspaces on the 2 monitors.
+bindsym $mod+comma exec python ~/.i3/switch.py
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+t focus down
@@ -83,11 +86,11 @@ bindsym $mod+Shift+S move right
 #bindsym $mod+Shift+Up move up
 #bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
-bindsym $mod+minus split h
+# split in vertical orientation: |
+bindsym $mod+Shift+underscore split h
 
-# split in vertical orientation
-bindsym $mod+Shift+underscore split v
+# split in horizontal orientation: -
+bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+z fullscreen
