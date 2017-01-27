@@ -15,8 +15,10 @@
 # Single monitors config.
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 
-# Enable compositing (to fix screen tearing)
-exec_always --no-startup-id compton --config ~/.config/compton.conf -b
+# Enable compositing (to fix screen tearing).
+# NOTE: enable this as a cron job instead. Doing it here might launch
+# multiple instances when i3 is restarted.
+#exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 
 set $win Mod4
 set $mod Mod1
@@ -52,7 +54,7 @@ bindsym $mod+c kill
 #bindsym $mod+g exec dmenu_run
 
 # start rofi (a program launcher). rofi needs to be installed.
-bindsym $mod+g exec "rofi -combi-modi window,drun -show combi -modi combi"
+bindsym $mod+space exec "rofi -combi-modi window,drun -show combi -modi combi"
 
 # lock screen
 bindsym Ctrl+Shift+Return exec gnome-screensaver-command -l
