@@ -49,7 +49,10 @@ bindsym $mod+Return exec konsole
 bindsym $mod+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+g exec dmenu_run
+#bindsym $mod+g exec dmenu_run
+
+# start rofi (a program launcher). rofi needs to be installed.
+bindsym $mod+g exec "rofi -combi-modi window,drun -show combi -modi combi"
 
 # lock screen
 bindsym Ctrl+Shift+Return exec gnome-screensaver-command -l
