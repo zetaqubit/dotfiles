@@ -41,14 +41,14 @@ values."
      ;; spell-checking
      ;; syntax-checking
      ;; version-control
-     ycmd
+     ;; ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages '(
-     company-ycmd
+     ;; company-ycmd
    )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '(
@@ -278,6 +278,16 @@ layers configuration. You are free to put any user code."
   ;; Increase scrollback in term
   (setq term-buffer-maximum-size 1000000)
 
+  ;; Configure indent
+  (setq tab-width 2)
+  (defvaralias 'c-basic-offset 'tab-width)
+  (setq python-indent 2)
+  (setq evil-shift-width python-indent)
+
+  ;; Include _ as part of the word in motions.
+  (with-eval-after-load 'evil
+    (defalias #'forward-evil-word #'forward-evil-symbol))
+
   ;; Have Avy (SPC SPC character jump) use Dvorak homerow
   (setq avy-keys '(?h ?t ?n ?s ?a ?o ?e ?u ?i ?d ?p ?g ?c ?r ?k ?l ?b ?m ?w ?v ?z))
 
@@ -321,10 +331,12 @@ layers configuration. You are free to put any user code."
 
   (define-key-insert-mode "C-h" 'delete-backward-char)
   (define-key-insert-mode "C-w" 'backward-kill-word)
+  (define-key-insert-mode "C-t" 'indent-for-tab-command)
   ;; TODO: enable after figuring out how to exclude terminal-mode.
   ;;(define-key-insert-mode "C-t" 'next-line)
   ;;(define-key-insert-mode "C-n" 'previous-line)
 
+  (define-key-normal-mode ";" 'evil-ex)
   (define-key-normal-mode "SPC ;" 'helm-M-x)
   (define-key-normal-mode "SPC :" 'evilnc-comment-operator)
   (define-key-normal-mode "h" 'evil-backward-char)
@@ -403,21 +415,15 @@ layers configuration. You are free to put any user code."
     (define-leader-command "t" 'helm-projectile-find-file)
   )
 
-  ;; Configure indent
-  (setq tab-width 2)
-  (defvaralias 'c-basic-offset 'tab-width)
-  (setq python-indent 2)
-  (setq evil-shift-width python-indent)
+  ;; (with-eval-after-load 'ycmd
+  ;;   (set-variable 'ycmd-server-command '("python" "/home/z/ycmd/ycmd"))
+  ;;   (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
+  ;;   (set-variable 'ycmd-extra-conf-whitelist '("~/*"))
+  ;; )
 
-  (with-eval-after-load 'ycmd
-    (set-variable 'ycmd-server-command '("python" "/home/z/ycmd/ycmd"))
-    (set-variable 'ycmd-global-config "~/.ycm_extra_conf.py")
-    (set-variable 'ycmd-extra-conf-whitelist '("~/*"))
-  )
-
-  (with-eval-after-load 'company-ycmd
-    (company-ycmd-setup)
-  )
+  ;; (with-eval-after-load 'company-ycmd
+  ;;   (company-ycmd-setup)
+  ;; )
 
   ;; Search for the keymap that contains a mapping
   (defun query-keybinding ()
@@ -428,7 +434,12 @@ layers configuration. You are free to put any user code."
      (global-key-binding (kbd "n"))
      ))
   )
+
 )
+
+(require 'google)
+(require 'google-ycmd)
+(setq flycheck-checkers '(ycmd))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
@@ -439,7 +450,7 @@ layers configuration. You are free to put any user code."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (evil-leader command-log-mode s powerline parent-mode projectile request gitignore-mode flycheck pkg-info epl flx smartparens iedit anzu highlight pos-tip company yasnippet packed dash helm avy helm-core async auto-complete popup package-build bind-key bind-map evil srefactor ranger paradox hydra spinner orgit magit-gitflow helm-flx evil-magit magit magit-popup git-commit with-editor company-quickhelp xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package stickyfunc-enhance spacemacs-theme spaceline smooth-scrolling smeargle shell-pop restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el page-break-lines open-junk-file neotree multi-term move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-c-headers cmake-mode clean-aindent-mode clang-format buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (company-ycmd f ycmd evil-leader command-log-mode s powerline parent-mode projectile request gitignore-mode flycheck pkg-info epl flx smartparens iedit anzu highlight pos-tip company yasnippet packed dash helm avy helm-core async auto-complete popup package-build bind-key bind-map evil srefactor ranger paradox hydra spinner orgit magit-gitflow helm-flx evil-magit magit magit-popup git-commit with-editor company-quickhelp xterm-color ws-butler window-numbering which-key volatile-highlights vi-tilde-fringe use-package stickyfunc-enhance spacemacs-theme spaceline smooth-scrolling smeargle shell-pop restart-emacs rainbow-delimiters quelpa popwin persp-mode pcre2el page-break-lines open-junk-file neotree multi-term move-text macrostep lorem-ipsum linum-relative leuven-theme info+ indent-guide ido-vertical-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation help-fns+ helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger flycheck-pos-tip flx-ido fill-column-indicator fancy-battery expand-region exec-path-from-shell evil-visualstar evil-tutor evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-jumper evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-args evil-anzu eval-sexp-fu eshell-prompt-extras esh-help elisp-slime-nav disaster define-word company-statistics company-c-headers cmake-mode clean-aindent-mode clang-format buffer-move bracketed-paste auto-yasnippet auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(projectile-other-file-alist
    (quote
     (("cc" "h")
