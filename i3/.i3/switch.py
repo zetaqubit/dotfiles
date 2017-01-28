@@ -23,7 +23,9 @@ if switch:
   i3.focus(con_id=focused_window['id'])
 else:
   # Just swap focus, not the workspaces.
-  for i, output in enumerate(outputs):
-    if focused_window['output'] == output['name']:
-      i3.workspace(outputs[1 - i]['current_workspace'])
-      break
+  workspaces = i3.get_workspaces()
+  for workspace in workspaces:
+    for output in outputs:
+      if workspace['name'] == output['current_workspace'] and not workspace['focused']:
+        i3.workspace(workspace['name'])
+        break
