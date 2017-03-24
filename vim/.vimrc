@@ -74,10 +74,9 @@ noremap <Leader>q :cope<CR>
 noremap <Leader>n :cn<CR>
 noremap <Leader>p :cp<CR>
 
-" Make ctrl-p in command-line mode behave exactly like up.
-" (e.g. will complete past commands with typed prefix)
-cnoremap <C-p> <up>
-cnoremap <C-n> <down>
+" Go backwards and forwards in jumplist
+"noremap <C-b> <C-o>
+"noremap <C-m> <C-i>
 
 " Buffer management
 "set switchbuf=usetab,newtab
@@ -120,12 +119,6 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
-
-" Make python indent 2 spaces
-autocmd VimEnter * call SetPythonIndent()
-function! SetPythonIndent()
-  autocmd FileType python,bzl setlocal tabstop=2 shiftwidth=2 softtabstop=2
-endfunction
 
 " Set tabstop, softtabstop and shiftwidth to the same value
 command! -nargs=* Stab call Stab()
@@ -174,9 +167,18 @@ set hidden
 " Enable visual word wrap (no EOLs inserted into actual file)
 set linebreak
 
-" Swap ; and :  Convenient.
+" Swap ; and :. Convenient.
 noremap : ;
 noremap ; :
+
+" Swap ` and '. Convenient for jumping to exact marks.
+noremap ' `
+noremap ` '
+
+" Swap , and ;. Convenient for repeating f and t motions.
+nnoremap , ;
+nnoremap : ,
+
 
 " Press F3 to toggle automatic word wrapping
 "noremap <F3> :set wm=2<CR>
@@ -190,20 +192,14 @@ noremap ; :
 "noremap <C-k> ]s
 "noremap <C-x> z=
 
-" Press comma to turn off highlighting and clear any message already displayed.
-nnoremap <silent> , :call clearmatches()<Bar>:nohlsearch<Bar>:echo<CR>
+" Press C-l to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <C-l> :call clearmatches()<Bar>:nohlsearch<Bar>:echo<CR><C-l>
 
 " Make man page appear in a vim window using :Man command
 runtime! ftplugin/man.vim
 
 " Sudo write current file
 "cmap W w !sudo tee >/dev/null %
-
-" Compile current file
-"noremap , :!pdflatex %<CR>
-
-" Open pdf of current file
-"noremap \ :!open %<.pdf<CR>
 
 " Show status line at the bottom of the screen
 set ruler
@@ -276,6 +272,18 @@ function! XTermPasteBegin()
   return ""
 endfunction
 
+" Visual mode: pressing * or ? searches for the current selection.
+vnoremap <silent> * :<C-U>
+      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+      \gvy/<C-R><C-R>=substitute(
+      \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+      \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> ? :<C-U>
+      \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+      \gvy?<C-R><C-R>=substitute(
+      \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+      \gV:call setreg('"', old_reg, old_regtype)<CR>
+
 
 " Open the corresponding .cc file from a .h file.
 noremap <Leader>c :edit %:p:s?\.h$?.cc?<CR>
@@ -295,12 +303,6 @@ highlight ColorColumn ctermbg=lightcyan
 filetype on
 autocmd FileType cpp setlocal colorcolumn=81
 
-" Add some filetypes
-augroup filetype
-  au! BufRead,BufNewFile *.proto setfiletype proto " proto
-  au! BufRead,BufNewFile *.prototxt setfiletype python " (fake proto)
-augroup end
-
 " Automatically refresh buffer from file.
 set autoread
 
@@ -313,51 +315,41 @@ noremap <Leader>, :silent! exe printf('match IncSearch /\<%s\>/', expand('<cword
 " Set 256 colors
 set t_Co=256
 
-" Bind <C-g> to <Esc> in insert mode. This still triggers InsertLeave autocommands.
-inoremap <C-g> <Esc>
-
 "
 
 """"""""""""""""""""""""""""""""
-" Following required for Vundle (required for YouCompleteMe)
+" Plugins managed by vim-plug
 """"""""""""""""""""""""""""""""
-filetype off
-set rtp+=~/.vim/bundle/vundle.vim/
-call vundle#begin()
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle.vim'
 if (!atgoogle)
-  Plugin 'Valloric/youcompleteme'
+  Plug 'Valloric/youcompleteme'
 endif
-Plugin 'tpope/vim-dispatch'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rsi'  " readline in insert mode
-"Plugin 'terryma/vim-multiple-cursors'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/unite.vim'
-Plugin 'Shougo/neomru.vim'
-Plugin 'sjbach/lusty'
-Plugin 'rosenfeld/conque-term'
-Plugin 'bling/vim-airline'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-"Plugin 'wincent/command-t'
-Plugin 'kien/ctrlp.vim'
-Plugin 'thirtythreeforty/lessspace.vim'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fugitive'
+"Plug 'terryma/vim-multiple-cursors'
+Plug 'Shougo/neomru.vim'
+"Plug 'sjbach/lusty'
+Plug 'rosenfeld/conque-term'
+Plug 'bling/vim-airline'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
 
-" Syntax highlighting
-Plugin 'google/vim-ft-bzl'
-Plugin 'beyondmarc/glsl.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-"Plugin 'fholgado/minibufexpl.vim'
+" Better handling of CamelCase and underscore_delimiters
+Plug 'bkad/camelcasemotion'
+"Plug 'kana/vim-textobj-user'
+"Plug 'julian/vim-textobj-variable-segment'
 
-call vundle#end()
-filetype on
+"Plug 'fholgado/minibufexpl.vim'
+
+call plug#end()
 filetype plugin indent on
 
 """"""""""""""""""""""""""""""""
-" End Vundle section.
+" End vim-plug section.
 """"""""""""""""""""""""""""""""
 
 "------ YouCompleteMe flags default location for C-family completion via Clang
@@ -389,35 +381,6 @@ noremap <Leader>r :Dispatch ant debug && ./install_and_run.sh<CR>
 noremap <Leader>d :Dispatch
 "------ End vim-dispatch
 
-"------ Begin command-t
-" Make Command-T open file in a new tab by default
-"let g:CommandTAcceptSelectionMap = '<CR>'
-"nnoremap <silent> <Leader>o :CommandT<CR>
-
-" Unbind open selection in tab.
-let g:CommandTAcceptSelectionTabMap = ''
-
-" Make Command-t recursively search from the current directory rather than git
-" root
-let g:CommandTTraverseSCM="pwd"
-
-let g:CommandTFileScanner="find"
-"------ End command-t
-
-"------ Begin ctrl-p
-let g:ctrlp_map = '<Leader>t'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_user_command = 'find %s -type f'
-let g:ctrlp_working_path_mode = ''
-
-let g:ctrlp_prompt_mappings = {
-    \ 'PrtSelectMove("j")':   ['<c-j>', '<c-n>'],
-    \ 'PrtSelectMove("k")':   ['<c-k>', '<c-p>'],
-    \ 'PrtHistory(-1)':       ['<c-i>'],
-    \ 'PrtHistory(1)':        ['<c-r>'],
-    \ }
-"------ End ctrl-p
-
 "------ Begin QuickFix Enter
 let g:qfenter_topen_map = ['<C-t>']
 "------ End QuickFix Enter
@@ -439,51 +402,20 @@ highlight multiple_cursors_cursor term=reverse cterm=reverse gui=reverse
 highlight link multiple_cursors_visual Visual
 "------ End Multiple Cursors
 
-"------ Begin Unite
-autocmd FileType unite call s:unite_my_settings()
-function! s:unite_my_settings()"{{{
-  " Overwrite settings.
-  nmap        <buffer> <ESC>          <Plug>(unite_exit)
-  nmap        <buffer> <C-c>          <Plug>(unite_exit)
-  nmap        <buffer> t              <Plug>(unite_loop_cursor_down)
-  nmap        <buffer> n              <Plug>(unite_loop_cursor_up)
-  nmap        <buffer> T              <Plug>(unite_select_next_page)
-  nmap        <buffer> N              <Plug>(unite_select_previous_page)
-  nmap        <buffer> <C-n>          <Plug>(unite_loop_cursor_down)
-  nmap        <buffer> <C-p>          <Plug>(unite_loop_cursor_up)
-  imap        <buffer> <C-d>          <Plug>(unite_select_next_page)
-  imap        <buffer> <C-u>          <Plug>(unite_select_previous_page)
-endfunction"}}}
+"------ Begin fzf
+nnoremap <leader>t :Files<CR>
+nnoremap <leader>e :Buffers<CR>
+nnoremap <leader>o :GFiles<CR>
+nnoremap <leader>l :BLines<CR>
+"------ End fzf
 
-" Make highlight light yellow. Workaround for cursor_line_highlight not
-" working.
-autocmd BufEnter,BufWinEnter \[unite\]* highlight! link CursorLine PmenuSel
-autocmd BufLeave \[unite\]* highlight! link CursorLine NONE
-
-call unite#filters#sorter_default#use(['sorter_rank'])
-call unite#filters#matcher_default#use(['converter_relative_word', 'matcher_fuzzy'])
-
-call unite#custom#profile('default', 'context', {
-      \ 'direction' : 'belowright',
-      \ 'prompt' : '» ',
-      \ 'start_insert' : 1,
-      \ 'cursor_line_highlight' : 'PmenuSel',
-      \ })
-
-let g:unite_enable_auto_select = 0
-
-nnoremap <leader>o :<C-u>Unite file_rec/async<cr>
-nnoremap <leader>e :<C-u>Unite buffer<cr>
-nnoremap <leader>b :<C-u>UniteWithBufferDir file_rec/async<cr>
-"nnoremap <leader>b :<C-u>UniteWithCurrentDir file_rec/async:!<cr>
-
-let g:unite_quick_match_table =
-      \ get(g:, 'unite_quick_match_table', {
-      \     'a' : 0, 'o' : 1, 'e' : 2, 'u' : 3, 'i' : 4, 'd' : 5, 'h' : 6, 't' : 7, 'n' : 8, ';' : 9, '-' : 10,
-      \     "'" : 11, ',' : 12, '.' : 13, 'p' : 14, 'y' : 15, 'f' : 16, 'g' : 17, 'c' : 18, 'r' : 19, 'l' : 20,
-      \     '1' : 21, '2' : 22, '3' : 23, '4' : 24, '5' : 25, '6' : 26, '7' : 27, '8' : 28, '9' : 29, '0' : 30,
-      \ })
-"------ End Unite
+"------ Begin CamelCaseMotion
+map W <Plug>CamelCaseMotion_w
+map B <Plug>CamelCaseMotion_b
+map E <Plug>CamelCaseMotion_e
+omap iW <Plug>CamelCaseMotion_iw
+xmap iW <Plug>CamelCaseMotion_iw
+"------ End CamelCaseMotion
 
 "------- Begin LustyJuggler
 noremap <Leader>u :LustyJuggler<CR>
@@ -497,15 +429,6 @@ let g:ConqueTerm_EscKey = '<C-c>'
 "------- Begin airline
 set laststatus=2
 "------- End airline
-
-"------- Begin lessspace.vim
-let g:lessspace_enabled = 1
-let g:lessspace_whitelist = ['cpp']
-"------- End lessspace.vim
-
-"------- Begin glsl.vim
-let g:glsl_file_extensions='*.glsl,*.geom,*.vert,*.frag,*.gsh,*.vsh,*.fsh,*.vs,*.fs,*.gs,*.tcs,*.tes'
-"------- End glsl.vim
 
 "------ Epilogue scripts
 
@@ -523,8 +446,3 @@ vmap <silent> <expr> p <sid>Repl()
 if (atgoogle)
   source ~/.vimrc_google
 endif
-
-if filereadable(glob('~/.vimrc_local'))
-  source ~/.vimrc_local
-endif
-
