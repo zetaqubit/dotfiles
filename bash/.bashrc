@@ -147,7 +147,7 @@ function parse_git_branch() {
 }
 
 function update_ps1() {
-    PS1="$BRIGHT_BLUE\w\n$BRIGHT_GREEN$(parse_git_branch)$BRIGHT_YELLOW\$ $NORMAL"
+    PS1="$BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n$BRIGHT_YELLOW\A $BRIGHT_VIOLETλ $NORMAL"
 }
 
 # Display the git branch in the prompt
