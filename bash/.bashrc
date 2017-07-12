@@ -160,12 +160,44 @@ update_ps1
 # Save the history after each command finishes
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
+# ------------------------------------------------------
+# Adding date + time to executed commands.
+
+function PreCommand() {
+  if [ -z "$AT_PROMPT" ]; then
+    return
+  fi
+  unset AT_PROMPT
+
+  # Do stuff.
+  echo -e "\033[1;33m$(date +'%k:%M') \033[1;32m$(date +'%F') \033[1;31m startz $ESC[m"
+}
+trap "PreCommand" DEBUG
+
+# This will run after the execution of the previous full command line.  We don't
+# want it PostCommand to execute when first starting a bash session (i.e., at
+# the first prompt).
+FIRST_PROMPT=1
+function PostCommand() {
+  AT_PROMPT=1
+
+  if [ -n "$FIRST_PROMPT" ]; then
+    unset FIRST_PROMPT
+    return
+  fi
+
+  # Do stuff.
+  #echo "Running PostCommand"
+}
+PROMPT_COMMAND="PostCommand $PROMPT_COMMAND"
+# ------------------------------------------------------
+
 
 
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    PS1="\[\033]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
     ;;
 *)
     ;;
