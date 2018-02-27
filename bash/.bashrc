@@ -272,10 +272,6 @@ if [ -f /usr/share/fzf/completion.bash ]; then
   source /usr/share/fzf/completion.bash
 fi
 
-if [ -f ~/.bashrc_google ]; then
-  source ~/.bashrc_google
-fi
-
 if [ -f ~/.bashrc_local ]; then
   source ~/.bashrc_local
 fi
