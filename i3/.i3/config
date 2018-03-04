@@ -65,10 +65,10 @@ bindsym $mod+F7 exec amixer set Master on && amixer set Headphone on && amixer s
 bindsym $mod+F8 exec amixer set Master on && amixer set Headphone on && amixer set Master 2+
 
 # Swap the focus between the 2 monitors.
-bindsym $mod+o exec python ~/.i3/switch.py
+bindsym $mod+o exec ~/.i3/switch.py
 
 # Swap the current workspaces on the 2 monitors.
-bindsym $mod+comma exec python ~/.i3/switch.py 'switch'
+bindsym $mod+comma exec ~/.i3/switch.py 'switch'
 
 # change focus
 bindsym $mod+h focus left

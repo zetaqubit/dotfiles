@@ -1,4 +1,4 @@
-#!/usr/bin/python2.7
+#!/usr/bin/env python
 # Swaps the workspaces active on the 2 monitors.
 # Needs i3-py. Install with 'pip install i3-py'
 
