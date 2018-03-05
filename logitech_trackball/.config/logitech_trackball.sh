@@ -8,6 +8,7 @@
 # Using libinput (new way)
 xinput set-prop "Logitech USB Trackball" "libinput Scroll Method Enabled" 0 0 1
 xinput set-prop "Logitech USB Trackball" "libinput Button Scrolling Button" 3
+xinput set-prop "Logitech USB Trackball" "libinput Horizontal Scroll Enabled" 0
 # ----------------------------------------------------------------------------- 
 
 
