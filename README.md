@@ -24,3 +24,9 @@ sudo xrdb -merge ~/.Xresources
 ```bash
 gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profiles:/:$(gsettings get org.gnome.Terminal.ProfilesList default | tr -d \')/ cursor-blink-mode off
 ```
+
+## Logitech trackball scrolling
+```bash
+stow logitech_trackball
+```
+If it doesn't immediately work, follow instructions in `~/.config/logitech_trackball.sh`.
