@@ -30,3 +30,20 @@ gsettings set org.gnome.Terminal.Legacy.Profile:/org/gnome/terminal/legacy/profi
 stow logitech_trackball
 ```
 If it doesn't immediately work, follow instructions in `~/.config/logitech_trackball.sh`.
+
+
+## Jupyter notebook
+### Setting default indent to 2
+Paste the following into browser's javascript console.
+The setting is persisted. Reset to default by exchanging : 2 for : null.
+
+```javascript
+var cell = Jupyter.notebook.get_selected_cell();
+var config = cell.config;
+var patch = {
+  CodeCell:{
+    cm_config:{indentUnit:2}
+  }
+}
+config.update(patch)
+```
