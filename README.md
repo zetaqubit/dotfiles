@@ -33,7 +33,7 @@ If it doesn't immediately work, follow instructions in `~/.config/logitech_track
 
 
 ## Jupyter notebook
-### Setting default indent to 2
+### Default indent of 2
 Paste the following into browser's javascript console.
 The setting is persisted. Reset to default by exchanging : 2 for : null.
 
@@ -47,3 +47,12 @@ var patch = {
 }
 config.update(patch)
 ```
+
+### Full width notebook
+Create ~/.jupyter/custom/custom.css with
+
+```
+.container { width:100% !important; }
+```
+
+[source](https://stackoverflow.com/questions/21971449/how-do-i-increase-the-cell-width-of-the-jupyter-ipython-notebook-in-my-browser)
