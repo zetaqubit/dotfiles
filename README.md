@@ -8,7 +8,7 @@ sudo pip install i3-py
 stow i3
 ```
 
-## Split ultrawide monitor into 2 displays (for i3).
+## split ultrawide monitor into 2 displays (for i3)
 ```bash
 stow ultrawide xsession
 ```
