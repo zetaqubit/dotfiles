@@ -8,6 +8,14 @@ sudo pip install i3-py
 stow i3
 ```
 
+## Split ultrawide monitor into 2 displays (for i3).
+```bash
+stow ultrawide xsession
+```
+
+[source](https://askubuntu.com/questions/150066/split-monitor-in-two/998435#998435)
+
+
 ## fix screen tearing
 ```bash
 sudo pacman -S compton
