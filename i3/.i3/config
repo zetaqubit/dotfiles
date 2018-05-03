@@ -70,6 +70,15 @@ bindsym $mod+o exec ~/.i3/switch.py
 # Swap the current workspaces on the 2 monitors.
 bindsym $mod+comma exec ~/.i3/switch.py 'switch'
 
+# Ultrawide: split into virtual displays (via xrandr).
+# 880x1440  2560x1440  (aka 16:9 video mode)
+bindsym $mod+m exec ~/.config/split_ultrawide.sh 1
+# 1720x1440  1720x1440 (aka equal split mode)
+bindsym $mod+w exec ~/.config/split_ultrawide.sh 0
+# 3440x1440  (aka 21:9 movie mode)
+bindsym $mod+v exec ~/.config/split_ultrawide.sh 2
+
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+t focus down
