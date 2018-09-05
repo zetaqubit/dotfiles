@@ -21,7 +21,8 @@ exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 #exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 
 set $win Mod4
-set $mod Mod1
+set $mod Mod4
+set $alt Mod1
 
 # font for window titles. ISO 10646 = Unicode
 font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
@@ -57,7 +58,8 @@ bindsym $mod+c kill
 bindsym $mod+space exec "bash -i -c 'rofi -combi-modi window,run -show combi -modi combi'"
 
 # lock screen
-bindsym Ctrl+Shift+Return exec gnome-screensaver-command -l
+exec --no-startup-id cinnamon-screensaver
+bindsym Ctrl+Shift+Return exec cinnamon-screensaver-command -l
 
 # change volume
 bindsym $mod+F6 exec amixer set Master toggle && amixer set Headphone toggle
@@ -142,16 +144,35 @@ bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
 
 # move focused container to workspace
-bindsym $mod+Shift+exclam move workspace 1
-bindsym $mod+Shift+at move workspace 2
-bindsym $mod+Shift+numbersign move workspace 3
-bindsym $mod+Shift+dollar move workspace 4
-bindsym $mod+Shift+percent move workspace 5
-bindsym $mod+Shift+asciicircum move workspace 6
-bindsym $mod+Shift+ampersand move workspace 7
-bindsym $mod+Shift+asterisk move workspace 8
-bindsym $mod+Shift+parenleft move workspace 9
-bindsym $mod+Shift+parenright move workspace 10
+bindsym $mod+$alt+exclam move workspace 1
+bindsym $mod+$alt+at move workspace 2
+bindsym $mod+$alt+numbersign move workspace 3
+bindsym $mod+$alt+dollar move workspace 4
+bindsym $mod+$alt+percent move workspace 5
+bindsym $mod+$alt+asciicircum move workspace 6
+bindsym $mod+$alt+ampersand move workspace 7
+bindsym $mod+$alt+asterisk move workspace 8
+bindsym $mod+$alt+parenleft move workspace 9
+bindsym $mod+$alt+parenright move workspace 10
+
+# Additional workspaces along bottom row of Kinesis
+bindsym $mod+grave workspace 11
+bindsym $mod+less workspace 12
+bindsym $mod+Left workspace 13
+bindsym $mod+Right workspace 14
+bindsym $mod+Down workspace 15
+bindsym $mod+Up workspace 16
+bindsym $mod+bracketleft workspace 17
+bindsym $mod+bracketright workspace 18
+
+bindsym $mod+$alt+grave move workspace 11
+bindsym $mod+$alt+less move workspace 12
+bindsym $mod+$alt+Left move workspace 13
+bindsym $mod+$alt+Right move workspace 14
+bindsym $mod+$alt+Down move workspace 15
+bindsym $mod+$alt+Up move workspace 16
+bindsym $mod+$alt+bracketleft move workspace 17
+bindsym $mod+$alt+bracketright move workspace 18
 
 # reload the configuration file
 bindsym $win+Shift+C reload
