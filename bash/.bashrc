@@ -150,12 +150,18 @@ function parse_git_branch() {
     fi
 }
 
-function update_ps1() {
-  PS1="${RED}zomega $YELLOW\D{%m/%d} \A $GREEN$(parse_git_branch) $BLUE\w\n$BRIGHT_VIOLETλ $NORMAL_BOLD"
+USE_SIMPLE_PROMPT=true
 
-  # Add date + time before starting command.
-  #PS0="${BRIGHT_RED}zalpha $BRIGHT_YELLOW\D{%m/%d} \A $BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n$BRIGHT_VIOLETλ $NORMAL_BOLD"
-  PS0="\033[1;31mzalpha \033[1;33m\D{%m/%d} \A \033[1;32m$(parse_git_branch) \033[1;34m\w$ESC[m\n"
+function update_ps1() {
+  if [ "$USE_SIMPLE_PROMPT" = true ]; then
+    PS1="$BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n$BRIGHT_YELLOW\A $BRIGHT_VIOLETλ $NORMAL"
+  else
+    PS1="${RED}zomega $YELLOW\D{%m/%d} \A $GREEN$(parse_git_branch) $BLUE\w\n$BRIGHT_VIOLETλ $NORMAL_BOLD"
+
+    # Add date + time before starting command.
+    #PS0="${BRIGHT_RED}zalpha $BRIGHT_YELLOW\D{%m/%d} \A $BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n$BRIGHT_VIOLETλ $NORMAL_BOLD"
+    PS0="\033[1;31mzalpha \033[1;33m\D{%m/%d} \A \033[1;32m$(parse_git_branch) \033[1;34m\w$ESC[m\n"
+  fi
 }
 
 # Display the git branch in the prompt
@@ -168,39 +174,6 @@ update_ps1
 
 # Save the history after each command finishes
 export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
-
-# ------------------------------------------------------
-# Adding date + time to executed commands.
-#
-#function PreCommand() {
-#  if [ -z "$AT_PROMPT" ]; then
-#    return
-#  fi
-#  unset AT_PROMPT
-#
-#  # Add date + time after command finishes executing.
-#  #echo -e "\033[1;31mzend   \033[1;33m$(date +'%k:%M') \033[1;32m$(date +'%F') $ESC[m"
-#}
-#trap "PreCommand" DEBUG
-#
-## This will run after the execution of the previous full command line.  We don't
-## want it PostCommand to execute when first starting a bash session (i.e., at
-## the first prompt).
-#FIRST_PROMPT=1
-#function PostCommand() {
-#  AT_PROMPT=1
-#
-#  if [ -n "$FIRST_PROMPT" ]; then
-#    unset FIRST_PROMPT
-#    return
-#  fi
-#
-#  # Do stuff.
-#  #echo "Running PostCommand"
-#}
-#PROMPT_COMMAND="PostCommand $PROMPT_COMMAND"
-# ------------------------------------------------------
-
 
 
 # If this is an xterm set the title to user@host:dir
