@@ -64,3 +64,26 @@ Create ~/.jupyter/custom/custom.css with
 ```
 
 [source](https://stackoverflow.com/questions/21971449/how-do-i-increase-the-cell-width-of-the-jupyter-ipython-notebook-in-my-browser)
+
+## Colab notebook
+### [Local runtime](https://research.google.com/colaboratory/local-runtimes.html)
+
+### Sync notebooks between git and Google Drive
+```bash
+sudo pacman -S rclone
+```
+
+[Connect to Google Drive](https://rclone.org/drive/)
+
+```bash
+alias gdrive_push="rclone sync --filter-from ~/code/z/rclone_filter.txt ~/code/z drive_git:z"
+alias gdrive_pull="rclone sync --filter-from ~/code/z/rclone_filter.txt drive_git:z  ~/code/z"
+alias gdrive_mount="rclone mount drive_git: /mnt/drive_git"
+```
+
+## Github
+### Preview markdown: [Grip](https://github.com/joeyespo/grip)
+```bash
+sudo pip install grip
+cd myrepo; grip
+```
