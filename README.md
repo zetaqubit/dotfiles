@@ -39,6 +39,12 @@ stow logitech_trackball
 ```
 If it doesn't immediately work, follow instructions in `~/.config/logitech_trackball.sh`.
 
+## auto-mounting drives under /media
+```bash
+sudo gnome-disks
+sudo chown -R z:z /media/${name}
+```
+
 
 ## Jupyter notebook
 ### Default indent of 2
