@@ -8,6 +8,13 @@ sudo pip install i3-py
 stow i3
 ```
 
+## polybar top bar
+[documentation](https://github.com/jaagr/polybar)
+```bash
+yaourt -S polybar
+stow polybar
+```
+
 ## split ultrawide monitor into 2 displays (for i3)
 ```bash
 stow ultrawide xsession
