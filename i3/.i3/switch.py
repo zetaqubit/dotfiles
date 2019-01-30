@@ -7,14 +7,14 @@ import sys
 
 switch = len(sys.argv) > 1 and sys.argv[1] == 'switch'
 
-# Remember the currently focused window.
-focused_window = i3.filter(nodes=[], focused=True)[0]
-
 # Retrieve workspaces on both monitors.
 outputs = filter(lambda output: output['active'], i3.get_outputs())
 outputs = [o for o in outputs]
 
 if switch:
+  # Remember the currently focused window.
+  focused_window = i3.filter(nodes=[], focused=True)[0]
+
   for output in outputs:
     i3.workspace(output['current_workspace'])
     i3.command('move', 'workspace to output right')
