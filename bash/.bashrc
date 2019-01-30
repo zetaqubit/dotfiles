@@ -211,6 +211,7 @@ alias l="ls -CF"
 
 # git shortcuts
 alias gs='git status'
+alias gr='git branch -avvv'  # Show commit status of all remotes.
 alias gch='git checkout'
 alias gco='git commit -am .'
 alias gb='git branch'
