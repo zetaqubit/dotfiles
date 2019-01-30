@@ -79,14 +79,45 @@ Create ~/.jupyter/custom/custom.css with
 [source](https://stackoverflow.com/questions/21971449/how-do-i-increase-the-cell-width-of-the-jupyter-ipython-notebook-in-my-browser)
 
 ## Colab notebook
-### [Local runtime](https://research.google.com/colaboratory/local-runtimes.html)
+### Set up local Python runtime
+[Documentation](https://research.google.com/colaboratory/local-runtimes.html)
 
 ### Sync notebooks between git and Google Drive
+#### Option 1 (best): ocamlfuse
+
+[Documentation](https://github.com/astrada/google-drive-ocamlfuse)
+
+```bash
+yaourt -S google-drive-ocamlfuse
+```
+
+```bash
+# Authenticate via web browser.
+google-drive-ocamlfuse
+
+# Mount Google Drive root at ~/drive.
+google-drive-ocamlfuse ~/drive
+
+# Clone source repo into ~/drive
+mkdir ~/drive/github; cd ~/drive/github
+git clone <source-repo-dir>
+
+# In source repo, configure remotes.
+git remote add drive ~/drive/github/<repo-dir>
+git branch -u drive/master master
+
+# To sync changes.
+git push drive
+git pull drive
+```
+
+#### Option 2: rclone
+
+[Documentation](https://rclone.org/drive/)
+
 ```bash
 sudo pacman -S rclone
 ```
-
-[Connect to Google Drive](https://rclone.org/drive/)
 
 ```bash
 alias gdrive_push="rclone sync --filter-from ~/code/z/rclone_filter.txt ~/code/z drive_git:z"
