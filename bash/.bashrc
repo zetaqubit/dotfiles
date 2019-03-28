@@ -150,7 +150,7 @@ function parse_git_branch() {
     fi
 }
 
-USE_SIMPLE_PROMPT=true
+USE_SIMPLE_PROMPT=false
 
 function update_ps1() {
   if [ "$USE_SIMPLE_PROMPT" = true ]; then
@@ -170,10 +170,10 @@ update_ps1
 
 
 # Save and reload the history after each command finishes
-#export PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
+#PROMPT_COMMAND="history -a; history -c; history -r; $PROMPT_COMMAND"
 
 # Save the history after each command finishes
-export PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
 
 
 # If this is an xterm set the title to user@host:dir
@@ -217,6 +217,11 @@ alias gco='git commit -am .'
 alias gb='git branch'
 alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
+
+# tmux shortcuts
+alias t='tmux'
+alias ta='tmux attach -t'
+alias td='tmux detach'
 
 # logcat grep
 alias loggrep='adb logcat | grep'

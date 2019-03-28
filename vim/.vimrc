@@ -344,6 +344,7 @@ Plug 'bkad/camelcasemotion'
 "Plug 'julian/vim-textobj-variable-segment'
 
 "Plug 'fholgado/minibufexpl.vim'
+Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
 filetype plugin indent on
@@ -429,6 +430,16 @@ let g:ConqueTerm_EscKey = '<C-c>'
 "------- Begin airline
 set laststatus=2
 "------- End airline
+
+"------ Begin vim-tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <C-t> :TmuxNavigateDown<cr>
+nnoremap <silent> <C-n> :TmuxNavigateUp<cr>
+nnoremap <silent> <C-s> :TmuxNavigateRight<cr>
+nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
+"------ End vim-tmux-navigator
 
 "------ Epilogue scripts
 
