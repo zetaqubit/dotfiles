@@ -222,6 +222,7 @@ alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committ
 alias t='tmux'
 alias ta='tmux attach -t'
 alias td='tmux detach'
+alias tk='tmux kill-session -t'
 
 # logcat grep
 alias loggrep='adb logcat | grep'

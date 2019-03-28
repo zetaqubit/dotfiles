@@ -3,3 +3,7 @@ vim/.vim/bundle/
 vim/.vim/swapfiles/*.swp
 
 neovim/.config/nvim/bundle/
+
+# Ignore plugins that shouldn't be backed up.
+tmux/.tmux/plugins/
+tmux/.tmux/resurrect/
