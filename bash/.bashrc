@@ -15,6 +15,13 @@ elif [ "$(uname)" == "Darwin" ]; then
   export MAC=true
 fi
 
+_open() {
+  xdg-open "$@" &> /dev/null &
+}
+if [ -n "$LINUX" ]; then
+  alias open='_open'
+fi
+
 # Use vim for everything
 export VISUAL=vim
 export EDITOR="$VISUAL"
