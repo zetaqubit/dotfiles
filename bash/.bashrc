@@ -226,10 +226,27 @@ alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
 
 # tmux shortcuts
-alias t='tmux'
-alias ta='tmux attach -t'
-alias td='tmux detach'
-alias tk='tmux kill-session -t'
+t() {
+  cmd="$1"
+  shift
+  case "$cmd" in
+    a)
+      tmux attach -t "$@"
+      ;;
+    d)
+      tmux detach "$@"
+      ;;
+    k)
+      tmux kill-session -t "$@"
+      ;;
+    c)  # Attach to clone of existing session.
+      tmux new-session -s "${1}_$2" -t "$1"
+      ;;
+    *)  # Catchall. Forward all args to tmux
+      tmux "$cmd" "$@"
+      ;;
+  esac
+}
 
 # logcat grep
 alias loggrep='adb logcat | grep'
