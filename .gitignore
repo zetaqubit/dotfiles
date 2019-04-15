@@ -7,3 +7,6 @@ neovim/.config/nvim/bundle/
 # Ignore plugins that shouldn't be backed up.
 tmux/.tmux/plugins/
 tmux/.tmux/resurrect/
+
+# Ignore i3 archived workspaces.
+i3/.i3/workspaces
