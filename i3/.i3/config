@@ -16,9 +16,7 @@
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
 
 # Enable compositing (to fix screen tearing).
-# NOTE: enable this as a cron job instead. Doing it here might launch
-# multiple instances when i3 is restarted.
-#exec_always --no-startup-id compton --config ~/.config/compton.conf -b
+exec_always --no-startup-id compton --config ~/.config/compton.conf -b
 
 set $win Mod4
 set $mod Mod4
