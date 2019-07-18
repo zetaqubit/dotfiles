@@ -81,11 +81,11 @@ cursor-scroll = ns-resize
 
 [bar/home0]
 inherit = bar/template
-monitor = ${env:MONITOR:DP-0}
+monitor = ${env:MONITOR:DP-2}
 
 [bar/home1]
 inherit = bar/template
-monitor = ${env:MONITOR:DP-4}
+monitor = ${env:MONITOR:DP-6}
 
 [module/xwindow]
 type = internal/xwindow
