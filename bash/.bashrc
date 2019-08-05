@@ -239,6 +239,9 @@ t() {
     k)
       tmux kill-session -t "$@"
       ;;
+    n)
+      tmux new-session -s "${1}"
+      ;;
     c)  # Attach to clone of existing session.
       tmux new-session -s "${1}_$2" -t "$1"
       ;;
