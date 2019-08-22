@@ -1,0 +1,69 @@
+{
+  "title": "Kinesis mac",
+  "rules": [
+    {
+      "description": "Kinesis mac: swap command and ctrl in Chrome",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_command"
+          },
+          "to": [
+            {
+              "key_code": "left_control"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 10730,
+                  "product_id": 258,
+                  "description": "Advantage2 Keyboard (Kinesis)"
+                }
+              ]
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.google.Chrome"
+              ]
+            }
+          ]
+        },
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "left_control"
+          },
+          "to": [
+            {
+              "key_code": "left_command"
+            }
+          ],
+          "conditions": [
+            {
+              "type": "device_if",
+              "identifiers": [
+                {
+                  "vendor_id": 10730,
+                  "product_id": 258,
+                  "description": "Advantage2 Keyboard (Kinesis)"
+                }
+              ]
+            },
+            {
+              "type": "frontmost_application_if",
+              "bundle_identifiers": [
+                "^com.google.Chrome"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+
