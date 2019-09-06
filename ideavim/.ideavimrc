@@ -49,8 +49,8 @@ noremap k N
 "noremap <CR> i<CR><Esc>
 
 " Easy access to begin and end. g means go by screen (not physical) line
-noremap H g^
-noremap S g$
+noremap H ^
+noremap S $
 
 " CTRL-K for descend into tag
 " noremap <C-j> <C-]>
