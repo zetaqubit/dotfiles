@@ -231,19 +231,19 @@ t() {
   shift
   case "$cmd" in
     a)
-      tmux attach -t "$@"
+      tmux attach -t "$@" 2>/dev/null || tmux new -s "${1}"
       ;;
     d)
-      tmux detach "$@"
+      tmux kill-session -t "$@"
       ;;
     k)
       tmux kill-session -t "$@"
       ;;
     n)
-      tmux new-session -s "${1}"
+      tmux new -s "${1}"
       ;;
     c)  # Attach to clone of existing session.
-      tmux new-session -s "${1}_$2" -t "$1"
+      tmux attach -t "${1}_$2" 2>/dev/null || tmux new -s "${1}_$2" -t "$1"
       ;;
     *)  # Catchall. Forward all args to tmux
       tmux "$cmd" "$@"
