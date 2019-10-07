@@ -1,4 +1,5 @@
-setxkbmap -layout dvorak -option ctrl:nocaps
+# Mapped by kinesis.
+#setxkbmap -layout dvorak -option ctrl:nocaps
 
 if [ -f ~/.config/compton.conf ]; then
   compton --config ~/.config/compton.conf -b
