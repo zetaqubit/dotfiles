@@ -87,6 +87,9 @@ monitor = ${env:MONITOR:DP-4}
 inherit = bar/template
 monitor = ${env:MONITOR:DP-6}
 
+[bar/laptop]
+inherit = bar/template
+
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
