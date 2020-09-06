@@ -78,10 +78,11 @@ if [ -n "$force_color_prompt" ]; then
   fi
 fi
 
+PS1='${debian_chroot:+($debian_chroot)}'
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
+    PS1+='\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\n\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\\n$ '
+    PS1+='\u@\h:\w\\n$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -157,17 +158,29 @@ function parse_git_branch() {
     fi
 }
 
-USE_SIMPLE_PROMPT=false
+USE_SIMPLE_PROMPT=true
 
 function update_ps1() {
   if [ "$USE_SIMPLE_PROMPT" = true ]; then
-    PS1="$BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n$BRIGHT_YELLOW\A ${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
+    PS1=""
+    PS1+="$BRIGHT_GREEN$(parse_git_branch) "
+    if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
+      PS1+="$BRIGHT_RED($CONDA_DEFAULT_ENV) "
+    fi
+    PS1+="$BRIGHT_CYAN\h "
+    PS1+="$BRIGHT_BLUE\w\n"
+    PS1+="$BRIGHT_YELLOW\A ${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
   else
-    PS1="${RED}zomega $YELLOW\D{%m/%d} \A $GREEN$(parse_git_branch) $BLUE\w\n${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
+    PS1="${RED}zomega $YELLOW\D{%m/%d} \A "
+    PS1+="$GREEN$(parse_git_branch) "
+    PS1+="$BRIGHT_CYAN\h "
+    PS1+="$BLUE\w\n${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
 
     # Add date + time before starting command.
-    #PS0="${BRIGHT_RED}zalpha $BRIGHT_YELLOW\D{%m/%d} \A $BRIGHT_GREEN$(parse_git_branch) $BRIGHT_BLUE\w\n${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
-    PS0="\033[1;31mzalpha \033[1;33m\D{%m/%d} \A \033[1;32m$(parse_git_branch) \033[1;34m\w$ESC[m\n"
+    PS0="${BRIGHT_RED}zalpha ${BRIGHT_YELLOW}\D{%m/%d} \A "
+    PS0+="${BRIGHT_GREEN}$(parse_git_branch) "
+    PS0+="${BRIGHT_BLUE}\w\n${BRIGHT_VIOLET}λ${WHITE} ${NORMAL}"
+    #PS0="\033[1;31mzalpha \033[1;33m\D{%m/%d} \A \033[1;32m$(parse_git_branch) \033[1;34m\w$ESC[m\n"
   fi
 }
 
