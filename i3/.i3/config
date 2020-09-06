@@ -90,6 +90,15 @@ bindsym $mod+F6 exec amixer set Master toggle && amixer set Headphone toggle
 bindsym $mod+F7 exec amixer set Master on && amixer set Headphone on && amixer set Master 2-
 bindsym $mod+F8 exec amixer set Master on && amixer set Headphone on && amixer set Master 2+
 
+# Media volume controls
+bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioLowerVolume exec amixer set Master on && amixer set Headphone on && amixer set Speaker on && amixer set Master 2-
+bindsym XF86AudioRaiseVolume exec amixer set Master on && amixer set Headphone on && amixer set Speaker on && amixer set Master 2+
+
+# Backlight
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5
+
 # Swap the focus between the 2 monitors.
 bindsym $mod+o exec ~/.i3/switch.py
 
