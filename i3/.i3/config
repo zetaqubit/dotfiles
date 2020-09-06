@@ -78,6 +78,9 @@ bindsym $mod+c [class="chrome"] scratchpad show
 # start rofi (a program launcher). rofi needs to be installed.
 bindsym $mod+space exec "bash -i -c 'rofi -combi-modi window,run -show combi -modi combi'"
 
+# start wifi tray applet. {networkmanager,nm-applet} need to be installed.
+exec_always --no-startup-id nm-applet
+
 # start polybar (top bar). polybar needs to be installed.
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
