@@ -9,11 +9,20 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+# Multiple monitors is now controlled by autorandr. Process:
+#   - Attach new monitor. xrandr --auto if it doesn't show up
+#   - arandr to configure its position
+#   - autorandr --save docked to save it
+#   - When new monitor is attached, refresh i3 so it shows up as workspace
+#
 # Multiple monitors config.
 #exec_always --no-startup-id xrandr --output DP-1 --auto --left-of DVI-I-1
 
 # Single monitors config.
 exec_always --no-startup-id xrandr --output DP-1 --auto --right-of DVI-I-1
+
+# Laptop w/ external monitor: 3440x1440 above 1920x1200
+#exec_always --no-startup-id xrandr --output DP3 --auto --above eDP1
 
 # Enable compositing (to fix screen tearing).
 exec_always --no-startup-id compton --config ~/.config/compton.conf -b
@@ -140,6 +149,12 @@ bindsym $mod+Shift+S move right
 #bindsym $mod+Shift+Down move down
 #bindsym $mod+Shift+Up move up
 #bindsym $mod+Shift+Right move right
+
+# move workspaces to different screens
+bindsym $mod+Ctrl+H move workspace to output left
+bindsym $mod+Ctrl+T move workspace to output down
+bindsym $mod+Ctrl+N move workspace to output up
+bindsym $mod+Ctrl+S move workspace to output right
 
 # split in vertical orientation: |
 bindsym $mod+Shift+underscore split h
