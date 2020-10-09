@@ -294,9 +294,6 @@ noremap <Leader>h :edit %:p:s?\.cc$?.h?<CR>
 " Ignore object and class files when doing file expansion.
 set wildignore+=*.o,*~,*.class,*.pyc,scons-out
 
-" Set up file-type dependent indent
-filetype indent on
-
 highlight ColorColumn ctermbg=lightcyan
 
 " 80-char margin for cpp files.
@@ -323,7 +320,7 @@ set t_Co=256
 call plug#begin('~/.vim/plugged')
 
 if (!atgoogle)
-  Plug 'Valloric/youcompleteme'
+  "Plug 'Valloric/youcompleteme'
 endif
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-fugitive'
@@ -347,7 +344,6 @@ Plug 'bkad/camelcasemotion'
 Plug 'christoomey/vim-tmux-navigator'
 
 call plug#end()
-filetype plugin indent on
 
 """"""""""""""""""""""""""""""""
 " End vim-plug section.
@@ -442,6 +438,10 @@ nnoremap <silent> <C-\> :TmuxNavigatePrevious<cr>
 "------ End vim-tmux-navigator
 
 "------ Epilogue scripts
+
+filetype plugin indent on
+autocmd filetype python setlocal sw=2 ts=2 sts=2 expandtab
+
 
 " Make vp not replace paste buffer, allowing for multiple pastes
 function! RestoreRegister()
