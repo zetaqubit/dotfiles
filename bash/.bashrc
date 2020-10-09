@@ -238,6 +238,9 @@ alias gb='git branch'
 alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
 
+alias gwl='watch -n1 --color git --no-pager log --color --oneline --graph -20'
+alias gws='watch -n1 --color git -c color.status=always status'
+
 # tmux shortcuts
 t() {
   cmd="$1"
@@ -263,6 +266,25 @@ t() {
       ;;
   esac
 }
+
+# conda shortcuts
+c() {
+  cmd="$1"
+  shift
+  case "$cmd" in
+    a)
+      conda activate "$@"
+      ;;
+    d)
+      conda deactivate
+      ;;
+  esac
+}
+
+alias nb="jupyter notebook \
+  --NotebookApp.allow_origin='https://colab.research.google.com' \
+  --port=8888 \
+  --NotebookApp.port_retries=0"
 
 # logcat grep
 alias loggrep='adb logcat | grep'
@@ -294,8 +316,9 @@ fi
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$HOME/neovim/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.local/bin"
 
 # Force Clang as the default C and C++ compiler in CMake
 #export CC=/usr/bin/clang
