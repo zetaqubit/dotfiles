@@ -1,5 +1,6 @@
 # Ignore files in "config" folders that shouldn't be backed up.
 vim/.vim/bundle/
+vim/.vim/plugged/
 vim/.vim/swapfiles/*.swp
 
 neovim/.config/nvim/bundle/
