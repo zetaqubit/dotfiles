@@ -114,6 +114,9 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5
 # Swap the focus between the 2 monitors.
 bindsym $mod+o exec ~/.i3/switch.py
 
+# Go to the last workspace (similar to alt-tab).
+bindsym $mod+u workspace back_and_forth
+
 # Swap the current workspaces on the 2 monitors.
 bindsym $mod+comma exec ~/.i3/switch.py 'switch'
 
