@@ -324,6 +324,8 @@ export PATH="$PATH:$HOME/.local/bin"
 #export CC=/usr/bin/clang
 #export CXX=/usr/bin/clang++
 
+alias python_test="python -m unittest discover -p '*_test.py'"
+
 if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
 fi
