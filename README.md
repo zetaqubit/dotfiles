@@ -68,7 +68,6 @@ restart
 ## Upgrading after a long time
 ```bash
 sudo pacman -Sy archlinux-keyring
-sudo pacman-key --refresh-keys
 sudo pacman -Syyu
 ```
 [source](https://bbs.archlinux.org/viewtopic.php?id=242639)
