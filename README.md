@@ -152,3 +152,11 @@ alias gdrive_mount="rclone mount drive_git: /mnt/drive_git"
 sudo pip install grip
 cd myrepo; grip
 ```
+
+### Set up SSH push
+Follow instructions [here](https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent#adding-your-ssh-key-to-the-ssh-agent), then
+```bash
+cd dotfiles
+git remote -v
+git remote set-url origin git@github.com:zetaqubit/dotfiles
+```
