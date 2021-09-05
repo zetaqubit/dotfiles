@@ -1,4 +1,4 @@
-# archlinux setup
+# ArchLinux
 Config files managed by GNU Stow.
 
 ## i3 window manager
@@ -46,7 +46,7 @@ stow logitech_trackball
 ```
 If it doesn't immediately work, follow instructions in `~/.config/logitech_trackball.sh`.
 
-# Fix dual-boot after Windows update
+## Fix dual-boot after Windows update
 1. Plug in arch-iso (Costco usb)
 2. F12 and select USB boot
 
@@ -64,6 +64,14 @@ exit
 restart
 ```
 [source](https://www.jeremymorgan.com/blog/linux/how-to-restore-arch-linux-after-installing-windows/)
+
+## Upgrading after a long time
+```bash
+sudo pacman -Sy archlinux-keyring
+sudo pacman-key --refresh-keys
+sudo pacman -Syyu
+```
+[source](https://bbs.archlinux.org/viewtopic.php?id=242639)
 
 # Custom configurations
 
