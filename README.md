@@ -46,6 +46,27 @@ stow logitech_trackball
 ```
 If it doesn't immediately work, follow instructions in `~/.config/logitech_trackball.sh`.
 
+# Fix dual-boot after Windows update
+1. Plug in arch-iso (Costco usb)
+2. F12 and select USB boot
+
+```bash
+loadkeys dvorak
+fdisk -l
+mkdir /mnt/arch
+mount -t auto /dev/nvme0n1p7 /mnt/arch  # Linux filesystem root from fdisk output
+arch-chroot /mnt/arch
+mount -t auto /dev/nvme0n1p1 /efi  # EFI dir from fdisk output
+os-prober
+grub-mkconfig > /boot/grub/grub.cfg
+grub-install --efi-directory=/efi --target=x86_64-efi /dev/nvme0n1
+exit
+restart
+```
+[source](https://www.jeremymorgan.com/blog/linux/how-to-restore-arch-linux-after-installing-windows/)
+
+# Custom configurations
+
 ## auto-mounting drives under /media
 ```bash
 sudo gnome-disks
