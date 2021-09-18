@@ -286,6 +286,8 @@ alias nb="jupyter notebook \
   --port=8888 \
   --NotebookApp.port_retries=0"
 
+alias sshz="ssh z@192.168.1.100 -L 8888:localhost:8888"
+
 # logcat grep
 alias loggrep='adb logcat | grep'
 
@@ -325,6 +327,10 @@ export PATH="$PATH:$HOME/.local/bin"
 #export CXX=/usr/bin/clang++
 
 alias python_test="python -m unittest discover -p '*_test.py'"
+
+export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/ml"
+export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/stock"
+export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/camel-up"
 
 if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
