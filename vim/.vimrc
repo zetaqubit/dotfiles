@@ -402,7 +402,7 @@ highlight link multiple_cursors_visual Visual
 "------ Begin fzf
 nnoremap <leader>t :Files<CR>
 nnoremap <leader>e :Buffers<CR>
-nnoremap <leader>o :GFiles<CR>
+nnoremap <leader>o :GFiles --cached --others --exclude-standard<CR>
 nnoremap <leader>l :BLines<CR>
 "------ End fzf
 
