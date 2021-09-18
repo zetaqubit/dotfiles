@@ -77,7 +77,7 @@ bindsym $mod+Shift+f move scratchpad
 
 # Show the first scratchpad window
 bindsym $mod+f scratchpad show
-bindsym $mod+g [class="terminal"] scratchpad show
+bindsym $mod+g [class="terminal|konsole"] scratchpad show
 bindsym $mod+c [class="chrome"] scratchpad show
 #------- End Scratchpad
 
