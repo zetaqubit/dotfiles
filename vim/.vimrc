@@ -28,12 +28,12 @@ noremap - <C-o>
 noremap _ <C-i>
 
 " Page down and page up
-"noremap T <C-f>
-"noremap N <C-b>
+noremap T <C-f>
+noremap N <C-b>
 
 " Half page down and half page up
-noremap T <C-d>
-noremap N <C-u>
+"noremap T <C-d>
+"noremap N <C-u>
 
 " C-t to scroll down a line, C-n to scroll up a line
 "noremap <C-t> <C-e>
