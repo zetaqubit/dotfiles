@@ -1,0 +1,52 @@
+// Cmd+Shift+P: Keybindings json
+// Place your key bindings in this file to override the defaults
+[
+  {
+    "key": "ctrl+s",
+    "command": "workbench.action.navigateRight"
+  },
+  {
+    "key": "ctrl+space e",
+    "command": "workbench.action.showAllEditorsByMostRecentlyUsed"
+  },
+  {
+    "key": "cmd+o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "ctrl+space r",
+    "command": "relatedFiles.openRelatedFile"
+  },
+  {
+    "key": "cmd+o",
+    "command": "-workbench.action.files.openFile"
+  },
+  {
+    "key": "ctrl+space o",
+    "command": "workbench.action.quickOpen"
+  },
+  {
+    "key": "cmd+l",
+    "command": "-expandLineSelection",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+l",
+    "command": "editor.action.formatChanges"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "-editor.action.transposeLetters",
+    "when": "textInputFocus && !editorReadonly"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "-extension.vim_ctrl+t",
+    "when": "editorTextFocus && vim.active && vim.use<C-t> && !inDebugRepl"
+  },
+  {
+    "key": "ctrl+t",
+    "command": "editor.action.indentLines",
+    "when": "editorTextFocus && !editorReadonly"
+  }
+]

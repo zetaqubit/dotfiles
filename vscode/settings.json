@@ -1,0 +1,12 @@
+// CMD+Shift+P: Settings Json
+{
+  "editor.formatOnType": true,
+  "vim.visualModeKeyBindings": [
+
+  ],
+  "vim.leader": "<Space>",
+  "vim.handleKeys": {
+    "<C-d>": true
+  },
+  "workbench.startupEditor": "none",
+}

@@ -1,0 +1,82 @@
+# CMD+Shift+P: Vim settings
+
+# .vimrc support is currently experimental. Only remaps are supported, and you may experience bugs.
+# Changes to this file require a full reload to take effect.
+#
+
+" Dvorak Movement Keys. g means go by screen (not physical) line
+noremap h h
+noremap t gj
+noremap n gk
+noremap s l
+
+" Back and forward in jump list
+noremap - <C-o>
+noremap _ <C-i>
+
+" Page down and page up
+"noremap T <C-f>
+"noremap N <C-b>
+
+" Half page down and half page up
+noremap T <C-d>
+noremap N <C-u>
+
+" C-t to scroll down a line, C-n to scroll up a line
+"noremap <C-t> <C-e>
+"noremap <C-n> <C-y>
+
+" Fix j, k, n, and s displaced by movement keys
+noremap l s
+noremap L S
+noremap j n
+noremap k N
+
+" Set ENTER to insert newline in command mode
+"noremap <CR> i<CR><Esc>
+
+" Easy access to begin and end. g means go by screen (not physical) line
+noremap H g^
+noremap S g$
+
+" CTRL-K for descend into tag
+" noremap <C-j> <C-]>
+noremap <C-k> <C-]>
+
+" Set max number of open tabs to 50
+set tabpagemax=50
+
+" Changing tabs
+"noremap <C-h> gT
+"noremap <C-s> gt
+
+" Changing windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-;> <C-w>l
+nnoremap <C-t> <C-w>j
+nnoremap <C-n> <C-w>k
+
+" Swap ; and :. Convenient.
+noremap : ;
+noremap ; :
+
+" Swap ` and '. Convenient for jumping to exact marks.
+noremap ' `
+noremap ` '
+
+" Swap , and ;. Convenient for repeating f and t motions.
+nnoremap , ;
+nnoremap : ,
+
+" Press C-l to turn off highlighting and clear any message already displayed.
+nnoremap <silent> <C-l> :call clearmatches()<Bar>:nohlsearch<Bar>:echo<CR><C-l>
+
+" Open the corresponding .cc file from a .h file.
+noremap <Leader>c :edit %:p:s?\.h$?.cc?<CR>
+
+" Open the corresponding .h file from a .cc file.
+noremap <Leader>h :edit %:p:s?\.cc$?.h?<CR>
+
+" Refresh all open buffers from files.
+noremap <leader>a :checktime<CR>
+
