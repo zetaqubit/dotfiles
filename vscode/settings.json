@@ -1,12 +1,20 @@
 // CMD+Shift+P: Settings Json
 {
-  "editor.formatOnType": true,
-  "vim.visualModeKeyBindings": [
+    "editor.tabSize": 2,
+    "security.workspace.trust.untrustedFiles": "open",
+    "terminal.integrated.defaultProfile.osx": "bash",
+    "terminal.integrated.macOptionIsMeta": true,
 
-  ],
-  "vim.leader": "<Space>",
-  "vim.handleKeys": {
-    "<C-d>": true
-  },
-  "workbench.startupEditor": "none",
+    "editor.formatOnType": true,
+    "workbench.startupEditor": "none",
+
+    "vim.visualModeKeyBindings": [
+    ],
+    "vim.leader": "<Space>",
+    "vim.handleKeys": {
+      "<C-d>": true
+    },
+    "vim.vimrc.enable": true,
+    "vim.vimrc.path": "$HOME/.vimrc",
 }
+
