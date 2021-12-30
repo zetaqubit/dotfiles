@@ -163,10 +163,10 @@ USE_SIMPLE_PROMPT=true
 function update_ps1() {
   if [ "$USE_SIMPLE_PROMPT" = true ]; then
     PS1=""
-    PS1+="$BRIGHT_GREEN$(parse_git_branch) "
     if [ ! -z "$CONDA_DEFAULT_ENV" ]; then
       PS1+="$BRIGHT_RED($CONDA_DEFAULT_ENV) "
     fi
+    PS1+="$BRIGHT_GREEN$(parse_git_branch) "
     PS1+="$BRIGHT_CYAN\h "
     PS1+="$BRIGHT_BLUE\w\n"
     PS1+="$BRIGHT_YELLOW\A ${BRIGHT_VIOLET}λ${WHITE}${RESET} "
@@ -278,6 +278,9 @@ c() {
     d)
       conda deactivate
       ;;
+    *)  # Catchall. Forward all args to conda
+      conda "$cmd" "$@"
+      ;;
   esac
 }
 
@@ -346,3 +349,20 @@ if [ -f ~/.bashrc_local ]; then
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/z/tools/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/z/tools/conda/etc/profile.d/conda.sh" ]; then
+        . "/home/z/tools/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/z/tools/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+eval "$(direnv hook bash)"
