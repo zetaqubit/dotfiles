@@ -1,0 +1,37 @@
+# -------------------- Custom key maps -------------------------------
+map t scrollDown
+map T scrollFullPageDown
+map h scrollFullPageDown
+map n scrollUp
+map N scrollFullPageUp
+map s scrollFullPageUp
+
+map - goBack
+map _ goForward
+map H previousTab
+map S nextTab
+
+map b Vomnibar.activateTabSelection
+
+# Open link in current tab
+map u LinkHints.activateMode
+
+# Open link in background tab
+map e LinkHints.activateModeToOpenInNewTab
+
+# Open multiple links in background
+map E LinkHints.activateModeWithQueue
+
+unmap f
+unmap F
+
+map ,t Vomnibar.activateInNewTab
+map j performFind
+map k performBackwardsFind
+
+map ] goNext
+map [ goPrevious
+
+
+# ---------- Characters used for link hints -------------------------
+# abcdfghijklmnopqrstvwxyz',.-;
