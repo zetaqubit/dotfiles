@@ -238,8 +238,11 @@ alias gb='git branch'
 alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
 
-alias gwl='watch -n1 --color git --no-pager log --color --oneline --graph -20'
-alias gws='watch -n1 --color git -c color.status=always status'
+alias watch_gl='watch -n1 --color git --no-pager log --color --oneline --graph -20'
+alias watch_gs='watch -n1 --color git -c color.status=always status'
+
+alias watch_smi='watch -n1 --color nvidia-smi'
+
 
 # tmux shortcuts
 t() {
@@ -335,6 +338,7 @@ alias python_test="python -m unittest discover -p '*_test.py'"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/ml"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/stock"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/camel-up"
+export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/redditlm"
 
 if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
@@ -366,3 +370,7 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 eval "$(direnv hook bash)"
+# https://github.com/direnv/direnv/wiki/Tmux
+if [ -x "$(command -v direnv)" ]; then
+  alias tmux='direnv exec / tmux'
+fi
