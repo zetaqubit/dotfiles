@@ -76,9 +76,14 @@ gaps inner 2
 bindsym $mod+Shift+f move scratchpad
 
 # Show the first scratchpad window
+# For filter criteria: https://i3wm.org/docs/userguide.html#command_criteria
+# Can also use .i3/win_filter.sh
 bindsym $mod+f scratchpad show
 bindsym $mod+g [class="terminal|konsole"] scratchpad show
 bindsym $mod+c [class="chrome"] scratchpad show
+bindsym $mod+g [class="terminal|konsole"] scratchpad show
+bindsym $mod+l [class="chrome" title="Chat - Google Chrome$"] scratchpad show
+bindsym $mod+c [class="chrome" title="(?<!- Chat) - Google Chrome$"] scratchpad show
 #------- End Scratchpad
 
 # start dmenu (a program launcher)
