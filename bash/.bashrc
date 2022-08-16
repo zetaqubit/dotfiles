@@ -369,8 +369,8 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-eval "$(direnv hook bash)"
 # https://github.com/direnv/direnv/wiki/Tmux
 if [ -x "$(command -v direnv)" ]; then
+  eval "$(direnv hook bash)"
   alias tmux='direnv exec / tmux'
 fi
