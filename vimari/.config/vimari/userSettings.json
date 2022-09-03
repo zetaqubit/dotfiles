@@ -1,0 +1,31 @@
+{
+  "excludedUrls": "", 
+  "linkHintCharacters": "abcdfghijklmnopqrstvwxyz',.-;",
+  "detectByCursorStyle": false,
+  "scrollSize": 150,
+  "openTabUrl": "https://www.google.com/",
+  "modifier": "", 
+  "smoothScroll": true,
+  "scrollDuration": 25, 
+  "transparentBindings": true,
+  "bindings": {
+      "hintToggle": "u",
+      "newTabHintToggle": "e",
+      "scrollUp": "n",
+      "scrollDown": "t",
+      "scrollLeft": "", 
+      "scrollRight": "", 
+      "scrollUpHalfPage": "s",
+      "scrollDownHalfPage": "h",
+      "goToPageTop": "g g",
+      "goToPageBottom": "shift+g",
+      "goToFirstInput": "g i",
+      "goBack": "-",
+      "goForward": "_",
+      "reload": "r",
+      "tabForward": "shift+s",
+      "tabBack": "shift+h",
+      "closeTab": "x",
+      "openTab": "" 
+  }
+}
