@@ -292,7 +292,7 @@ alias nb="jupyter notebook \
   --port=8888 \
   --NotebookApp.port_retries=0"
 
-alias sshz="ssh z@192.168.1.100 -L 8888:localhost:8888"
+alias sshz="ssh z@192.168.1.200 -p 31500 -L 8888:localhost:8888"
 
 # logcat grep
 alias loggrep='adb logcat | grep'
