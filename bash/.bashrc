@@ -293,6 +293,7 @@ alias nb="jupyter notebook \
   --NotebookApp.port_retries=0"
 
 alias sshz="ssh z@192.168.1.200 -p 31500 -L 8888:localhost:8888 -L 5000:localhost:5000"
+alias sshzr="ssh z@zetaqubit.freeddns.org -p 31500 -L 8888:localhost:8888 -L 5000:localhost:5000"
 
 # logcat grep
 alias loggrep='adb logcat | grep'
