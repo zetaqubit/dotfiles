@@ -1,3 +1,10 @@
+# Mac OS
+
+## Battery management
+[battery](https://github.com/actuallymentor/battery)
+* Limit charging to 80%
+
+
 # ArchLinux
 Config files managed by GNU Stow.
 
