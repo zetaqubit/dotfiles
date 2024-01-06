@@ -329,6 +329,7 @@ export PATH="$HOME/neovim/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
+export PATH="/opt/homebrew/opt/qt5/bin:$PATH"
 
 # Force Clang as the default C and C++ compiler in CMake
 #export CC=/usr/bin/clang
