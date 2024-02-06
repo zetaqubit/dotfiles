@@ -6,7 +6,7 @@
   "openTabUrl": "https://www.google.com/",
   "modifier": "", 
   "smoothScroll": true,
-  "scrollDuration": 25, 
+  "scrollDuration": 1, 
   "transparentBindings": true,
   "bindings": {
       "hintToggle": "u",
@@ -23,8 +23,8 @@
       "goBack": "-",
       "goForward": "_",
       "reload": "r",
-      "tabForward": "shift+s",
-      "tabBack": "shift+h",
+      "tabForward": ["shift+s", "o"],
+      "tabBack": ["shift+h", "a"],
       "closeTab": "x",
       "openTab": "" 
   }
