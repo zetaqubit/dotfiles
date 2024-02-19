@@ -459,7 +459,7 @@ endfunction
 vmap <silent> <expr> p <sid>Repl()
 
 " (MacOSX) Make vim copy to system clipboard by default.
-set clipboard+=unnamed
+"set clipboard+=unnamed
 
 if (atgoogle)
   source ~/.vimrc_google
