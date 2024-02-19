@@ -78,3 +78,6 @@ alias sshzr="ssh z@zetaqubit.freeddns.org -p 31500 -L 8888:localhost:8888 -L 500
 # Sioyek (pdf reader)
 alias pdf="/Applications/sioyek.app/Contents/MacOS/sioyek"
 
+# CTLR-U delete from current pos to beginning of line.
+bindkey \^U backward-kill-line
+
