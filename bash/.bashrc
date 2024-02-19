@@ -28,6 +28,8 @@ export EDITOR="$VISUAL"
 alias v="vim"
 alias vi="vim"
 
+alias pdf="/Applications/sioyek.app/Contents/MacOS/sioyek"
+
 # disable XON/OFF
 stty -ixon
 
