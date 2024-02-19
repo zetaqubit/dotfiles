@@ -11,6 +11,6 @@ tmux/.tmux/resurrect/
 i3/.i3/workspaces
 
 # zsh
-zsh/.zsh/plugins/  # exclude plugins
-zsh/.zsh/themes/  # exclude themes
-zsh/.zsh/local/  # exclude any local custom zsh files
+zsh/.zsh/plugins/
+zsh/.zsh/themes/
+zsh/.zsh/local/
