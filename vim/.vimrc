@@ -261,6 +261,7 @@ let g:NERDTreeMapOpenExpl='~'
 
 let g:NERDTreeDirArrows=0
 let g:NERDTreeMinimalUI=1
+let g:NERDTreeShowHidden=1
 
 
 " Automatically enter paste-mode when CTRL-V'ing into insert mode.
