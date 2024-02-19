@@ -9,3 +9,8 @@ tmux/.tmux/resurrect/
 
 # Ignore i3 archived workspaces.
 i3/.i3/workspaces
+
+# zsh
+zsh/.zsh/plugins/  # exclude plugins
+zsh/.zsh/themes/  # exclude themes
+zsh/.zsh/local/  # exclude any local custom zsh files
