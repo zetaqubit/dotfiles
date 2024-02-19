@@ -86,7 +86,7 @@ noremap <Leader>p :cp<CR>
 ":set timeoutlen=300
 
 " Turn line numbering on
-set nu
+set rnu
 
 " Keep 4-line margin at top and bot of screen.
 set scrolloff=4
@@ -254,6 +254,7 @@ hi PmenuSel ctermbg=lightyellow
 set title
 
 " Remap keys in NerdTree
+nnoremap <Leader>n :NERDTreeToggle<CR>
 let g:NERDTreeMapOpenInTab='e'
 let g:NERDTreeMapOpenInTabSilent='E'
 let g:NERDTreeMapOpenExpl='~'
@@ -332,7 +333,7 @@ Plug 'bling/vim-airline'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
 " Better handling of CamelCase and underscore_delimiters
@@ -342,6 +343,8 @@ Plug 'bkad/camelcasemotion'
 
 "Plug 'fholgado/minibufexpl.vim'
 Plug 'christoomey/vim-tmux-navigator'
+
+Plug 'preservim/nerdtree'
 
 call plug#end()
 
@@ -453,6 +456,9 @@ function! s:Repl()
   return "p@=RestoreRegister()\<cr>"
 endfunction
 vmap <silent> <expr> p <sid>Repl()
+
+" (MacOSX) Make vim copy to system clipboard by default.
+set clipboard+=unnamed
 
 if (atgoogle)
   source ~/.vimrc_google
