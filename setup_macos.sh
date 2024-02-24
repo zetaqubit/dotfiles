@@ -32,7 +32,7 @@ brew install ag fzf
 
 # tmux
 # ! In tmux, ctrl-space I to install plugins.
-brew install tmux
+brew install tmux reattach-to-user-namespace
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
