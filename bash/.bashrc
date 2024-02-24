@@ -240,7 +240,7 @@ alias gb='git branch'
 alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
 
-alias watch_gl='watch -n1 --color git --no-pager log --color --oneline --graph -20'
+alias watch_gl='watch -n1 --color git --no-pager log --color --oneline --graph --decorate --all -20'
 alias watch_gs='watch -n1 --color git -c color.status=always status'
 
 alias watch_smi='watch -n1 --color nvidia-smi'
