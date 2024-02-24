@@ -1,0 +1,18 @@
+[alias]
+  a = add
+	b = branch
+	ch = checkout
+	co = commit
+  cm = commit -m
+  ca = commit --amend
+  d = branch -D
+  dr = branch -D --remote
+  lg = log --color --oneline --graph --decorate --all --format='%C(auto)%h %Cgreen(%cr)%C(auto)%d %s'
+  r = rebase
+
+[push]
+	autoSetupRemote = true
+[pull]
+	ff = only
+[rebase]
+	updateRefs = true
