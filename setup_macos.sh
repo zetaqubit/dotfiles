@@ -39,3 +39,9 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 # Vim
 # ! In vim, :PlugInstall to install the plugins.
 
+
+# Python
+ipython profile create
+cd ~/code/zetaqubit/dotfiles
+stow -t ~/ ipython
+
