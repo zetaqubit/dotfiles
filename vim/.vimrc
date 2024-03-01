@@ -86,7 +86,7 @@ noremap <Leader>p :cp<CR>
 ":set timeoutlen=300
 
 " Turn line numbering on
-set rnu
+set nu
 
 " Keep 4-line margin at top and bot of screen.
 set scrolloff=4
