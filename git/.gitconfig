@@ -5,9 +5,11 @@
 	co = commit
   cm = commit -m
   ca = commit --amend
-  d = branch -D
-  dr = branch -D --remote
-  lg = log --color --oneline --graph --decorate --all --format='%C(auto)%h %Cgreen(%cr)%C(auto)%d %s'
+  d = diff
+  ds = diff --cached
+  del = branch -D
+  delr = branch -D --remote
+  lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr)%C(auto)%d %s'
   r = rebase
 
 [push]
