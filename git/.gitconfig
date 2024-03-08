@@ -1,6 +1,7 @@
 [alias]
   a = add
 	b = branch
+  s = status
 	ch = checkout
 	co = commit
   cm = commit -m
@@ -11,6 +12,7 @@
   delr = branch -D --remote
   lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr)%C(auto)%d %s'
   r = rebase
+  squash = rebase -i
 
 [push]
 	autoSetupRemote = true
