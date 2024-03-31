@@ -52,6 +52,9 @@ c.InteractiveShellApp.exec_lines = ['''
         %run ~/code/ipython_start.py
 
     %r
+
+    print('%hw to write to ~/code/ipython_history.py')
+    print('%r to read from ~/code/ipython_start.py')
 ''']
 
 ## A list of dotted module names of IPython extensions to load.
