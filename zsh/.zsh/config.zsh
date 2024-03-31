@@ -22,6 +22,8 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH="/opt/homebrew/opt/qt5/bin:$PATH"
+export PATH="$HOME/code/bigH/git-fuzzy/bin:$PATH"
+
 
 # Python
 alias python_test="python -m unittest discover -p '*_test.py'"
@@ -32,6 +34,15 @@ export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/redditlm"
 
 # FZF
 export FZF_DEFAULT_COMMAND='ag --hidden --ignore .git -g ""'
+
+# git-fuzzy https://github.com/bigH/git-fuzzy
+export GIT_FUZZY_STATUS_ADD_KEY='Ctrl-I'
+export GIT_FUZZY_STATUS_EDIT_KEY='Ctrl-E'
+export GIT_FUZZY_STATUS_RESET_KEY='Ctrl-R'
+export GIT_FUZZY_STATUS_DISCARD_KEY='Ctrl-D'
+export GIT_FUZZY_STATUS_COMMIT_KEY='Ctrl-K'
+export GIT_FUZZY_STATUS_AMEND_KEY='Ctrl-J'
+
 
 # Make git etc not pipe to less by default.
 unset LESS;
@@ -51,3 +62,6 @@ bindkey '\ef' emacs-forward-word
 bindkey '\eb' emacs-backward-word
 autoload -U select-word-style
 select-word-style bash
+
+# Disable highlight on paste.
+unset zle_bracketed_paste
