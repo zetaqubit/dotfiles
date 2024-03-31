@@ -4,7 +4,7 @@
 # change window focus within space
 ctrl - h : yabai -m window --focus west
 ctrl - t : yabai -m window --focus south
-ctrl - n : yabai -m window --focus north
+# ctrl - n : yabai -m window --focus north  # conflicts with next line
 ctrl - s : yabai -m window --focus east
 
 # Change Focus Between Displays
