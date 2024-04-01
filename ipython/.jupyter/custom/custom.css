@@ -1,0 +1,21 @@
+/* Full width notebook.
+ * https://stackoverflow.com/questions/21971449/how-do-i-increase-the-cell-width-of-the-jupyter-ipython-notebook-in-my-browser
+ * https://stackoverflow.com/questions/77030544/how-do-i-increase-the-cell-width-of-the-jupyter-version-7
+ */
+
+.container {
+    width: 100% !important;
+}
+
+.cell {
+    width: 100%;
+}
+
+.code_cell {
+    width: 100%;
+}
+
+.jp-Notebook {
+  --jp-notebook-max-width: 100%;
+}
+
