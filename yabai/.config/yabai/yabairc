@@ -19,7 +19,7 @@ yabai -m config window_gap 6
 yabai -m config mouse_follows_focus on
 
 # Set focus follows mouse mode (default: off, options: off, autoraise, autofocus)
-yabai -m config focus_follows_mouse autoraise
+yabai -m config focus_follows_mouse off # autofocus
 
 # modifier for clicking and dragging with mouse
 yabai -m config mouse_modifier ctrl
@@ -33,6 +33,7 @@ yabai -m mouse_drop_action swap
 
 # Disable specific apps from being managed with yabai. Use this format for the apps you’d like to disable.
 yabai -m rule --add app="^System Settings$" manage=off
+yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Webex$" manage=off
 
