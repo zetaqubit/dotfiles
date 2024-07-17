@@ -4,7 +4,7 @@ SAVEHIST=10000000
 setopt BANG_HIST                 # Treat the '!' character specially during expansion.
 setopt EXTENDED_HISTORY          # Write the history file in the ":start:elapsed;command" format.
 setopt APPEND_HISTORY            # Append history when the shell exits.
-setopt NO_INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
+setopt INC_APPEND_HISTORY        # Write to the history file immediately, not when the shell exits.
 setopt NO_SHARE_HISTORY             # Share history between all sessions.
 setopt HIST_EXPIRE_DUPS_FIRST    # Expire duplicate entries first when trimming history.
 setopt HIST_IGNORE_DUPS          # Don't record an entry that was just recorded again.
@@ -23,6 +23,8 @@ export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
 export PATH="/opt/homebrew/opt/qt5/bin:$PATH"
 export PATH="$HOME/code/bigH/git-fuzzy/bin:$PATH"
+
+export XDG_CONFIG_HOME="$HOME/.config"
 
 
 # Python

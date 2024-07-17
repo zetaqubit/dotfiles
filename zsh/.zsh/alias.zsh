@@ -64,7 +64,38 @@ alias watch_gs='watch -n2 --color -t git -c color.status=always status'
 
 # Watch
 wt() {
-  watch "${@} | tail";
+  watch -n5 "${@} | tail";
+}
+
+# Watch into editable vim window
+we() {
+  if [[ -z $1 ]]; then
+    echo "Usage: run_and_edit <command>"
+    return 1
+  fi
+
+  local cmd_name="${@//[^a-zA-Z0-9]/_}"
+  local temp_file="$(mktemp "/tmp/${cmd_name}_XXXXXX")"
+  local temp_file_working="$(mktemp "/tmp/${cmd_name}_working_XXXXXX")"
+
+  while true; do
+    $@ > "$temp_file_working" 2>&1
+    # Copy the working temp file's contents to the main temp file
+    # once the command completes its execution.
+    cp "$temp_file_working" "$temp_file"
+    sleep 5
+  done &
+  local loop_pid=$!  # Capture the PID of the loop process
+
+  $@ > "$temp_file" 2>&1
+  vim "$temp_file"  # Open the main temp file in Vim
+
+  # After Vim exits, kill the background loop process specifically
+  kill $loop_pid
+
+  # Clean up the temp files
+  [[ -f $temp_file ]] && rm "$temp_file"
+  [[ -f $temp_file_working ]] && rm "$temp_file_working"
 }
 
 # Nvidia
