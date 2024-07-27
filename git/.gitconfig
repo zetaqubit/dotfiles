@@ -1,3 +1,6 @@
+[include]
+    path = /Users/z/.gitconfig_local
+
 [alias]
   a = add
 	b = branch
@@ -5,18 +8,30 @@
 	ch = checkout
 	co = commit
   cm = commit -m
-  ca = commit --amend
+  ca = commit --amend --no-edit
+	cof = commit --no-verify
+	caf = commit --amend --no-edit --no-verify
+  aco = !git add . && git co
+  aca = !git add . && git ca
+  acof = !git add . && git cof
+  acaf = !git add . && git caf
   d = diff
   ds = diff --cached
   del = branch -D
   delr = branch -D --remote
-  lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr)%C(auto)%d %s'
+  lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr) %C(yellow)%an%C(auto)%d %s'
   r = rebase
+  ra = rebase --abort
+  rc = rebase --continue
+  ro = rebase HEAD^ --onto
+  rom = rebase HEAD^ --onto master
   squash = rebase -i
 
 [push]
 	autoSetupRemote = true
 [pull]
 	ff = only
+	rebase = true
 [rebase]
 	updateRefs = true
+
