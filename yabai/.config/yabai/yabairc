@@ -36,4 +36,5 @@ yabai -m rule --add app="^System Settings$" manage=off
 yabai -m rule --add app="^Activity Monitor$" manage=off
 yabai -m rule --add app="^Calculator$" manage=off
 yabai -m rule --add app="^Webex$" manage=off
+yabai -m rule --add title="^Settings$" manage=off  # Pycharm settings
 
