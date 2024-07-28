@@ -87,6 +87,7 @@ noremap <Leader>p :cp<CR>
 
 " Turn line numbering on
 set nu
+set relativenumber
 
 " Keep 4-line margin at top and bot of screen.
 set scrolloff=4
