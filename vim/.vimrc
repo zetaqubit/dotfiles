@@ -64,10 +64,10 @@ set tabpagemax=50
 "noremap <C-s> gt
 
 " Changing windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-s> <C-w>l
-nnoremap <C-t> <C-w>j
-nnoremap <C-n> <C-w>k
+nnoremap <M-h> <C-w>h
+nnoremap <M-s> <C-w>l
+nnoremap <M-t> <C-w>j
+nnoremap <M-n> <C-w>k
 
 " Open and navigate quickfix results
 noremap <Leader>q :cope<CR>
