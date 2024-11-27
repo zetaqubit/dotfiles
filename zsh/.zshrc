@@ -117,3 +117,4 @@ source $ZSH/oh-my-zsh.sh
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
