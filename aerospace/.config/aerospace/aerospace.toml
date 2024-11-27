@@ -110,6 +110,7 @@ ctrl-7 = 'workspace 7'
 ctrl-8 = 'workspace 8'
 ctrl-9 = 'workspace 9'
 ctrl-0 = 'workspace 10'
+ctrl-leftSquareBracket = 'workspace 11'
 ctrl-f6 = 'workspace a'
 ctrl-f7 = 'workspace b'
 ctrl-f8 = 'workspace c'
@@ -127,6 +128,7 @@ ctrl-shift-7 = 'move-node-to-workspace 7'
 ctrl-shift-8 = 'move-node-to-workspace 8'
 ctrl-shift-9 = 'move-node-to-workspace 9'
 ctrl-shift-0 = 'move-node-to-workspace 10'
+ctrl-shift-leftSquareBracket = 'move-node-to-workspace 11'
 ctrl-shift-f6 = 'move-node-to-workspace a'
 ctrl-shift-f7 = 'move-node-to-workspace b'
 ctrl-shift-f8 = 'move-node-to-workspace c'
@@ -137,8 +139,11 @@ ctrl-shift-f = 'layout floating tiling'
 
 ctrl-m = 'fullscreen'
 
+ctrl-o = 'exec-and-forget ~/.config/aerospace/toggle_focus_1_and_3.sh'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-ctrl-o = 'focus-back-and-forth'
+ctrl-q = 'focus-back-and-forth'
+
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
 ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
@@ -187,6 +192,7 @@ alt-shift-l = ['join-with right', 'mode main']
 8 = 3
 9 = 3
 10 = 3
+11 = 3
 a = 'main'
 b = 'main'
 c = 'main'
