@@ -26,6 +26,7 @@
   ro = rebase HEAD^ --onto
   rom = rebase HEAD^ --onto master
   squash = rebase -i
+  reword = commit --amend
 
 [push]
 	autoSetupRemote = true
