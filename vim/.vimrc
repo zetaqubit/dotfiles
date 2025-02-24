@@ -17,11 +17,14 @@ inoremap <C-d> <Esc>
 " Change <Leader> to space
 let mapleader = "\<Space>"
 
-" Dvorak Movement Keys. g means go by screen (not physical) line
+" Dvorak Movement Keys.
+" Add g to go by screen (not physical) line
 noremap h h
-noremap t gj
-noremap n gk
+noremap t j
+noremap n k
 noremap s l
+noremap gt gj
+noremap gn gk
 
 " Back and forward in jump list
 noremap - <C-o>
