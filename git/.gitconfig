@@ -20,7 +20,8 @@
   ds = diff --cached
   del = branch -D
   delr = branch -D --remote
-  lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr) %C(yellow)%an%C(auto)%d %s'
+  # lg = log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr) %C(yellow)%an%C(auto)%d %s'
+  lg = "!git log --color --oneline --graph --decorate --branches --tags --format='%C(auto)%h %Cgreen(%cr) %C(yellow)%an%C(auto)%d %s' -20 | sed -E 's/upstream[^ )]*//g'"
   r = rebase
   ra = rebase --abort
   rc = rebase --continue
