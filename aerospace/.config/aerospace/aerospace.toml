@@ -116,6 +116,7 @@ ctrl-f7 = 'workspace b'
 ctrl-f8 = 'workspace c'
 ctrl-f9 = 'workspace d'
 ctrl-f10 = 'workspace e'
+ctrl-f1 = 'workspace scratchpad'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
 ctrl-shift-1 = 'move-node-to-workspace 1'
@@ -139,7 +140,8 @@ ctrl-shift-f = 'layout floating tiling'
 
 ctrl-m = 'fullscreen'
 
-ctrl-o = 'exec-and-forget ~/.config/aerospace/toggle_focus_1_and_3.sh'
+ctrl-o = 'exec-and-forget ~/.config/aerospace/toggle_focus_7_and_3.sh'
+ctrl-comma = 'exec-and-forget ~/.config/aerospace/scratchpad.sh com.openai.chat ChatGPT'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
 ctrl-q = 'focus-back-and-forth'
