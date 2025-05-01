@@ -200,6 +200,7 @@ b = 'main'
 c = 'main'
 d = 3
 e = 3
+scratchpad = 'main'
 
 [[on-window-detected]]
 if.app-name-regex-substring = 'Webex'
