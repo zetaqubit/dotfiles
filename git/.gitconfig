@@ -1,5 +1,6 @@
 [include]
     path = /Users/z/.gitconfig_local
+    path = /Users/zeta/.gitconfig_local
 
 [alias]
   a = add
