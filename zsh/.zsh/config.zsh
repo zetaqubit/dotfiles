@@ -67,3 +67,7 @@ select-word-style bash
 
 # Disable highlight on paste.
 unset zle_bracketed_paste
+
+if [[ -f "${ZDOTDIR:-$HOME}/config_local.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/config_local.zsh"
+fi
