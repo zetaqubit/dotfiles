@@ -18,11 +18,11 @@ keymap.set({ "n", "v" }, ";", ":", { desc = "Swap ; and :" })
 keymap.set({ "n", "v" }, ":", ";", { desc = "Swap ; and :" })
 
 -- Pane navigation
-keymap.set({ "n", "v", "i" }, "<M-h>", "<cmd>TmuxNavigateLeft<cr><esc>", { desc = "Navigate left a pane." })
-keymap.set({ "n", "v", "i" }, "<M-t>", "<cmd>TmuxNavigateDown<cr><esc>", { desc = "Navigate down a pane." })
-keymap.set({ "n", "v", "i" }, "<M-n>", "<cmd>TmuxNavigateUp<cr><esc>", { desc = "Navigate up a pane." })
-keymap.set({ "n", "v", "i" }, "<M-s>", "<cmd>TmuxNavigateRight<cr><esc>", { desc = "Navigate right a pane." })
-keymap.set({ "n", "v", "i" }, "<M-->", "<cmd>TmuxNavigatePrevious<cr><esc>", { desc = "Navigate to previous pane." })
+-- keymap.set({ "n", "v", "i" }, "<M-h>", "<cmd>NvimTmuxNavigateLeft<cr><esc>", { desc = "Navigate left a pane." })
+-- keymap.set({ "n", "v", "i" }, "<M-t>", "<cmd>NvimTmuxNavigateDown<cr><esc>", { desc = "Navigate down a pane." })
+-- keymap.set({ "n", "v", "i" }, "<M-n>", "<cmd>NvimTmuxNavigateUp<cr><esc>", { desc = "Navigate up a pane." })
+-- keymap.set({ "n", "v", "i" }, "<M-s>", "<cmd>NvimTmuxNavigateRight<cr><esc>", { desc = "Navigate right a pane." })
+-- keymap.set({ "n", "v", "i" }, "<M-->", "<cmd>NvimTmuxNavigateLastActive<cr><esc>", { desc = "Navigate to previous pane." })
 
 -- Back and forward in jump list
 keymap.set({ "n", "v" }, "-", "<C-o>", { desc = "Back in the jump list" })
@@ -68,3 +68,4 @@ keymap.set(
 		end
 	end)()
 )
+
