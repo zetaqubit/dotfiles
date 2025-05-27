@@ -119,7 +119,7 @@ source $ZSH/oh-my-zsh.sh
 
 eval "$(direnv hook zsh)"
 
-source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
+[ -f /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme ] && source /opt/homebrew/share/powerlevel10k/powerlevel10k.zsh-theme
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
