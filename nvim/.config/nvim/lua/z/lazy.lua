@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup(
   {
     { import = "z.plugins", cond = not vim.g.vscode },
-    { import = "z.plugins.lsp", cond = false }
+    { import = "z.plugins.lsp", cond = not vim.g.vscode },
   },
   {
     checker = {

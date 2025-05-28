@@ -1,8 +1,8 @@
 -- LSP plugin manager. Also manages other servers like linting.
 return {
-	"williamboman/mason.nvim",
+	"mason-org/mason.nvim",
 	dependencies = {
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 	},
 	config = function()
@@ -28,10 +28,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"tsserver",
 				"html",
-				"cssls",
-				"tailwindcss",
 				"svelte",
 				"lua_ls",
 				"graphql",
@@ -39,6 +36,7 @@ return {
 				"prismals",
 				"pyright",
 				"bashls",
+        "basedpyright",
 			},
 		})
 

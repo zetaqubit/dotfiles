@@ -25,11 +25,12 @@ return {
     })
     local keymap = vim.keymap -- for conciseness
 
-    keymap.set("n", "<leader>ff", require('fzf-lua').files, { desc = "Fuzzy find files in cwd" })
-    keymap.set("n", "<leader>fr", require('fzf-lua').oldfiles, { desc = "Fuzzy find recent files" })
-    keymap.set("n", "<leader>fs", require('fzf-lua').live_grep, { desc = "Find string in cwd" })
-    keymap.set("n", "<leader>fc", require('fzf-lua').grep_cword, { desc = "Find string under cursor in cwd" })
-    keymap.set("n", "<leader>fg", require('fzf-lua').resume, { desc = "Resume last find" })
+    keymap.set("n", "<leader>ff", require('fzf-lua').files, { desc = "[F]ind [f]iles in cwd" })
+    keymap.set("n", "<leader>fr", require('fzf-lua').oldfiles, { desc = "[F]ind [r]ecent files" })
+    keymap.set("n", "<leader>fs", require('fzf-lua').live_grep, { desc = "[F]ind [s]tring in cwd" })
+    keymap.set("n", "<leader>fc", require('fzf-lua').grep_cword, { desc = "[F]ind string under [c]ursor in cwd" })
+    keymap.set("n", "<leader>fg", require('fzf-lua').resume, { desc = "[R]esume last find" })
+    keymap.set("n", "<leader>fp", require('fzf-lua').git_status, { desc = "[F]ind Git [p]ending files" })
     -- keymap.set("n", "<leader>ft", require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true}), { desc = "Find todos" })
   end,
 }
