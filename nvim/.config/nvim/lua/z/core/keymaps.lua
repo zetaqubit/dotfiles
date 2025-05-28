@@ -52,20 +52,6 @@ keymap.set("n", "<leader>tp", "<cmd>tabp<CR>", { desc = "Go to previous tab" }) 
 keymap.set("n", "<leader>tf", "<cmd>tabnew %<CR>", { desc = "Open current buffer in new tab" }) --  move current buffer to new tab
 
 -- Toggle diagnostics
-keymap.set(
-	"n",
-	"<leader>td",
-	(function()
-		local diag_status = 1 -- 1 is show; 0 is hide
-		return function()
-			if diag_status == 1 then
-				diag_status = 0
-				vim.diagnostic.hide()
-			else
-				diag_status = 1
-				vim.diagnostic.show()
-			end
-		end
-	end)()
-)
+require('z.core.toggle_diagnostics')
+keymap.set('n', '<leader>td', toggle_diagnostics, { desc = 'Toggle LSP diagnostics' })
 
