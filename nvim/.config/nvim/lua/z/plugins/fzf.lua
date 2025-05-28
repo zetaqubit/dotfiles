@@ -31,6 +31,7 @@ return {
     keymap.set("n", "<leader>fc", require('fzf-lua').grep_cword, { desc = "[F]ind string under [c]ursor in cwd" })
     keymap.set("n", "<leader>fg", require('fzf-lua').resume, { desc = "[R]esume last find" })
     keymap.set("n", "<leader>fp", require('fzf-lua').git_status, { desc = "[F]ind Git [p]ending files" })
+    keymap.set("n", "<leader>fk", require('fzf-lua').keymaps, { desc = "[F]ind [k]eymaps" })
     -- keymap.set("n", "<leader>ft", require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true}), { desc = "Find todos" })
   end,
 }
