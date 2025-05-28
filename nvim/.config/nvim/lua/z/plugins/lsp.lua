@@ -86,7 +86,7 @@ return {
 
         -- Fuzzy find all the symbols in your current workspace.
         --  Similar to document symbols, except searches over your entire project.
-        map('<leader>fw', require('fzf-lua').lsp_live_workspace_symbols, '[F]ind [W]orkspace Symbols')
+        map('<leader>fw', require('fzf-lua').lsp_live_workspace_symbols, '[F]ind[ [W]orkspace Symbols')
 
         -- Rename the variable under your cursor.
         --  Most Language Servers support renaming across files, etc.
@@ -228,7 +228,15 @@ return {
     --    :Mason
     --
     --  You can press `g?` for help in this menu.
-    require('mason').setup()
+    require('mason').setup({
+			ui = {
+				icons = {
+					package_installed = "✓",
+					package_pending = "➜",
+					package_uninstalled = "✗",
+				},
+			},
+		})
 
     -- You can add other tools here that you want Mason to install
     -- for you, so that they are available from within Neovim.
