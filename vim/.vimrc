@@ -171,9 +171,10 @@ set hidden
 " Enable visual word wrap (no EOLs inserted into actual file)
 set linebreak
 
-" Swap ; and :. Convenient.
-noremap : ;
+" Map ; to :
 noremap ; :
+noremap , ;
+noremap <Leader>, ,
 
 " Swap ` and '. Convenient for jumping to exact marks.
 noremap ' `
@@ -313,7 +314,7 @@ set autoread
 noremap <leader>a :checktime<CR>
 
 " Highlight occurrences of the current word
-noremap <Leader>, :silent! exe printf('match IncSearch /\<%s\>/', expand('<cword>'))<CR>
+noremap <Leader>* :silent! exe printf('match IncSearch /\<%s\>/', expand('<cword>'))<CR>
 
 " Set 256 colors
 set t_Co=256

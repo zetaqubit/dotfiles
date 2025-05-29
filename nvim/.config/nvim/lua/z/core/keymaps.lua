@@ -13,9 +13,10 @@ keymap.set({ "n", "v", "o" }, "T", "<C-d>", { desc = "Move down half a page." })
 keymap.set({ "n", "v", "o" }, "N", "<C-u>", { desc = "Move up half a page." })
 keymap.set({ "n", "v", "o" }, "S", "$", { desc = "Move to end of line." })
 
--- Swap ; and :
-keymap.set({ "n", "v" }, ";", ":", { desc = "Swap ; and :" })
-keymap.set({ "n", "v" }, ":", ";", { desc = "Swap ; and :" })
+-- Make ; behave same as :
+keymap.set({ "n", "v" }, ";", ":", { desc = "Map ; to :" })
+keymap.set({ "n", "v", "o" }, ",", ";", { desc = "Repeat f" })
+keymap.set({ "n", "v", "o" }, "<leader>,", ",", { desc = "Repeat f (reverse)" })
 
 -- Pane navigation
 -- keymap.set({ "n", "v", "i" }, "<M-h>", "<cmd>NvimTmuxNavigateLeft<cr><esc>", { desc = "Navigate left a pane." })
