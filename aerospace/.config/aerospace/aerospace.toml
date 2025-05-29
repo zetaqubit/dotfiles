@@ -90,7 +90,7 @@ ctrl-slash = 'layout accordion vertical horizontal'
 
 ctrl-h = 'focus left'
 ctrl-t = 'focus down'
-ctrl-k = 'focus up'  # ctrl-n needed for next-line
+# ctrl-n = 'focus up'  # ctrl-n needed for next-line
 ctrl-s = 'focus right'
 
 ctrl-shift-h = 'move left'
@@ -140,7 +140,7 @@ ctrl-shift-f = 'layout floating tiling'
 
 ctrl-m = 'fullscreen'
 
-ctrl-o = 'exec-and-forget ~/.config/aerospace/toggle_focus_1_and_3.sh'
+ctrl-period = 'exec-and-forget ~/.config/aerospace/toggle_focus_1_and_3.sh'
 ctrl-comma = 'exec-and-forget ~/.config/aerospace/scratchpad.sh com.openai.chat ChatGPT'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
