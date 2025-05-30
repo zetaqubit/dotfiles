@@ -240,7 +240,8 @@ alias gb='git branch'
 alias gd='git diff'
 alias gbs='git for-each-ref --sort=committerdate refs/heads/ --format="%(committerdate:short) %(refname:short)"'
 
-alias watch_gl='watch -n1 --color git --no-pager log --color --oneline --graph --decorate --all -20'
+#alias watch_gl='watch -n1 --color git --no-pager log --color --oneline --graph --decorate --all -20'
+alias watch_gl="watch -n1 --color 'git --no-pager log --color --graph -50 --pretty=format:\"%ad %h %s\" --date=format-local:\"%Y-%m-%d %H:%M:%S\"'"
 alias watch_gs='watch -n1 --color git -c color.status=always status'
 
 alias watch_smi='watch -n1 --color nvidia-smi'
@@ -328,6 +329,7 @@ fi
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 export PATH="$HOME/neovim/bin:$PATH"
+export PATH="/usr/local/cuda/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="$PATH:$HOME/.local/bin"
 export PATH="$PATH:/opt/homebrew/bin"
@@ -343,6 +345,7 @@ export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/ml"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/stock"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/camel-up"
 export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/redditlm"
+export PYTHONPATH="$PYTHONPATH:$HOME/code/zetaqubit/name_classifier"
 
 if [ -f /usr/share/fzf/key-bindings.bash ]; then
   source /usr/share/fzf/key-bindings.bash
