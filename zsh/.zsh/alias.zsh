@@ -46,8 +46,8 @@ alias hr="fc -IR"  # Read from history.
 alias hw="fc -IA"  # Write (append) to history.
 
 # Vim
-alias v="vim"
-alias vi="vim"
+alias v="nvim"
+alias vi="nvim"
 
 # Git
 alias g='git'
