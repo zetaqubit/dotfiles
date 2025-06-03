@@ -26,14 +26,15 @@ return {
     local keymap = vim.keymap -- for conciseness
 
     keymap.set("n", "<leader>ff", require('fzf-lua').files, { desc = "[F]ind [f]iles in cwd" })
-    keymap.set("n", "<leader>fr", require('fzf-lua').oldfiles, { desc = "[F]ind [r]ecent files" })
+    -- keymap.set("n", "<leader>fr", require('fzf-lua').oldfiles, { desc = "[F]ind [r]ecent files" })
     keymap.set("n", "<leader>fs", require('fzf-lua').live_grep, { desc = "[F]ind [s]tring in cwd" })
     keymap.set("n", "<leader>f*", require('fzf-lua').grep_cword, { desc = "[F]ind string under [c]ursor in cwd" })
     keymap.set("n", "<leader>f:", "<cmd>FzfLua command_history<CR>", { desc = "Search command history" })
+    keymap.set("n", "<leader>f;", "<cmd>FzfLua command_history<CR>", { desc = "Search command history" })
     keymap.set("n", "<leader>f/", "<cmd>FzfLua search_history<CR>", { desc = "Search search history" })
     keymap.set("n", "<leader>fg", require('fzf-lua').resume, { desc = "[R]esume last find" })
     keymap.set("n", "<leader>fp", require('fzf-lua').git_status, { desc = "[F]ind Git [p]ending files" })
     keymap.set("n", "<leader>fk", require('fzf-lua').keymaps, { desc = "[F]ind [k]eymaps" })
-    -- keymap.set("n", "<leader>ft", require('fzf-lua').grep({search='TODO|HACK|PERF|NOTE|FIX', no_esc=true}), { desc = "Find todos" })
+    keymap.set("n", "<leader>ft", "<cmd>TodoFzfLua<CR>", { desc = "Find todos" })
   end,
 }
