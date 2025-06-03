@@ -57,8 +57,26 @@ map({ "n", "v" }, "_", "<C-i>", { desc = "Forward in the jump list" })
 map({ "n", "v", "o" }, "j", "n", { desc = "Next search hit." })
 map({ "n", "v", "o" }, "k", "N", { desc = "Previous search hit." })
 
--- clear search highlights
-map("n", "<leader>nh", ":nohl<CR>", { desc = "Clear search highlights" })
+-- Toggle highlights
+--   - If search is active, clear it
+--   - If no search is active, highlight occurences of current word. (Similar to *, but does not jump)
+map("n", "<leader>th", function()
+  local hlsearch = vim.o.hlsearch
+  local search_pat = vim.fn.getreg('/')
+
+  if hlsearch and search_pat ~= '' then
+    -- Disable search highlight
+    vim.cmd("nohlsearch")
+    vim.fn.setreg('/', '') -- Optionally clear the search register
+  else
+    -- Set search pattern to <cword> but don't move the cursor
+    local word = vim.fn.expand("<cword>")
+    if word ~= '' then
+      vim.fn.setreg('/', [[\V\<]] .. word .. [[\>]])
+      vim.o.hlsearch = true
+    end
+  end
+end, { desc = "Toggle highlight of <cword> without jumping" })
 
 -- increment/decrement numbers
 map("n", "<leader>+", "<C-a>", { desc = "Increment number" }) -- increment
