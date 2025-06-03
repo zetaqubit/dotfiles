@@ -14,6 +14,10 @@ return {
 
       telescope.setup({
         defaults = {
+          sorting_strategy = "ascending", -- display results top->bottom
+          layout_config = {
+            prompt_position = "top"       -- search bar at the top
+          },
           path_display = { "smart" },
           pickers = {
             live_grep = {
@@ -29,6 +33,7 @@ return {
           },
           mappings = {
             i = {
+              ["<esc>"] = actions.close,                   -- exit telescope on first ESC (normally enters normal mode)
               ["<C-k>"] = actions.move_selection_previous, -- move to prev result
               ["<C-j>"] = actions.move_selection_next,     -- move to next result
               ["<C-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
