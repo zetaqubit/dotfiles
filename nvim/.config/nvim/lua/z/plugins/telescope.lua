@@ -67,7 +67,7 @@ return {
       require("telescope").load_extension("smart_open")
       vim.keymap.set("n", "<leader><leader>", function()
         require("telescope").extensions.smart_open.smart_open()
-      end, { noremap = true, silent = true })
+      end, { noremap = true, silent = true, desc = 'Smart open file based on use' })
     end,
     dependencies = {
       "kkharji/sqlite.lua",
