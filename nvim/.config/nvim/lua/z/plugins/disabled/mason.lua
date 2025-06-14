@@ -26,9 +26,9 @@ return {
 				"graphql",
 				"emmet_ls",
 				"prismals",
-				"pyright",
-				"bashls",
-        "basedpyright",
+				-- "pyright",
+				[[ "bashls", ]]
+        -- "basedpyright",
 			},
       automatic_installation = true,
 		})
