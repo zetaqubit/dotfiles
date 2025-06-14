@@ -11,6 +11,22 @@ return {
     map("n", "<leader>gt", ":DiffviewOpen<CR>", opts("Open Git [D]iff (working [t]ree vs HEAD)"))
     map("n", "<leader>gh", ":DiffviewFileHistory<CR>", opts("Git commit [h]istory with diffs"))
     map("n", "<leader>gf", ":DiffviewFileHistory %<CR>", opts("View Git history of current [f]ile"))
+
+    -- Search line for commit and open full commit in DiffView
+    map("n", "<leader>gc", function()
+      local line = vim.fn.getline(".")
+      local hash = line:match("^.-|.-|%s*(%x+)")
+      if not hash then
+        hash = line:match("^(%x+)")
+      end
+
+      if hash then
+        vim.cmd("DiffviewOpen " .. hash .. "^!")
+      else
+        print("No commit hash found on this line.")
+      end
+    end, opts("Open full commit diff in Diffview"))
+
     -- Lua
     local actions = require("diffview.actions")
 
