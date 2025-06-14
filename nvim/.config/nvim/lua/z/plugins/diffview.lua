@@ -27,6 +27,14 @@ return {
       end
     end, opts("Open full commit diff in Diffview"))
 
+    -- Close Commit Log window
+    vim.api.nvim_create_autocmd("BufWinEnter", {
+      pattern = "diffview://*/log/*/commit_log",
+      callback = function()
+        vim.keymap.set("n", "q", ":q<CR>", { buffer = true, silent = true })
+      end,
+    })
+
     -- Lua
     local actions = require("diffview.actions")
 
