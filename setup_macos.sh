@@ -1,7 +1,7 @@
 # Install Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-brew install iterm2
+brew install kitty
 brew install git
 
 # Oh My Zsh
