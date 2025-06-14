@@ -1,13 +1,8 @@
 return {
   "FabijanZulj/blame.nvim",
   lazy = false,
-  config = function()
-    require("blame").setup({})
-    local keymap = vim.keymap -- for conciseness
-    keymap.set("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "Toggle Blame" })
-  end,
   opts = {
-    date_format = "%d.%m.%Y",
+    date_format = "%Y-%m-%d",
     virtual_style = "right_align",
     views = {
       window = window_view,
@@ -20,7 +15,7 @@ return {
     colors = nil,
     blame_options = nil,
     commit_detail_view = "vsplit",
-    format_fn = ("blame.formats.default_formats").commit_date_author_fn,
+    format_fn = ("blame.formats.default_formats").date_message,
     mappings = {
       commit_info = "i",
       stack_push = "<TAB>",
@@ -29,4 +24,10 @@ return {
       close = { "<esc>", "q" },
     },
   },
+  config = function(_, opts)
+    require("blame").setup(opts)
+    local keymap = vim.keymap -- for conciseness
+    keymap.set("n", "<leader>gb", "<cmd>BlameToggle<CR>", { desc = "Toggle Blame" })
+    keymap.set("n", "<leader>gB", "<cmd>BlameToggle virtual<CR>", { desc = "Toggle Blame (virtual text)" })
+  end,
 }
