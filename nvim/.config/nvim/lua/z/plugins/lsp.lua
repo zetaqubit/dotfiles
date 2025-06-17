@@ -109,6 +109,10 @@ return {
          -- jump to next diagnostic in buffer
         map("]d", vim.diagnostic.goto_next, "Go to next diagnostic")
 
+        map("<leader>l", function()
+          vim.lsp.buf.format({ async = true })
+        end, "LSP format current file")
+
 
         -- The following two autocommands are used to highlight references of the
         -- word under your cursor when your cursor rests there for a little while.
@@ -190,14 +194,16 @@ return {
       },
       html = { filetypes = { 'html', 'twig', 'hbs' } },
       jsonls = {},
-      -- pyright = {},
       -- rust_analyzer = {},
       -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
       --
+      pyright = {},  -- needed for go to references
       pylsp = {
         settings = {
           pylsp = {
             plugins = {
+              pylint = { enabled = true },
+              pytype = { enabled = true },
               pyflakes = { enabled = false },
               pycodestyle = { enabled = false },
               autopep8 = { enabled = false },
