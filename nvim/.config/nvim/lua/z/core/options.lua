@@ -20,7 +20,14 @@ opt.ignorecase = true -- ignore case when searching
 opt.smartcase = true -- if you include mixed case in your search, assumes you want case-sensitive
 
 -- cursor line
-opt.cursorline = true -- highlight the current cursor line
+opt.cursorline = true  -- highlight the current cursor line
+vim.api.nvim_create_autocmd("ColorScheme", {
+  callback = function()
+    vim.api.nvim_set_hl(0, "LineNr", { fg = "#a6adc8" })  -- Make relative line numbers more prominent
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "NONE" }) -- Disable full line highlight
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffcc00", bold = true }) -- Highlight only the current line number
+  end,
+})
 
 -- appearance
 
